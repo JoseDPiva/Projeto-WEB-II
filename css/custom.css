@@ -1,0 +1,79 @@
+#item-nav {
+    font-variant: small-caps;
+    font-weight: bold;
+    color: rgb(22, 47, 160);
+}
+
+#nav-item {
+    border: 2px solid rgb(22, 47, 160);
+}
+
+#nav-entrar {
+    background-color: rgb(22, 47, 160);
+}
+
+#nav-entrar-texto {
+    color: white;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#nav-bar {
+    border-style: hidden hidden solid hidden;
+    border-color: rgb(22, 47, 160);
+    background-color: rgb(40, 164, 185);
+}
+
+#col-1-top-section {
+    margin-top : 100px;
+}
+
+#img-header {
+    width: 100%;
+    height: 300px;
+    background-size: cover;
+}
+
+#section-top {
+    margin-bottom: 60px;
+}
+
+#destino-home-div {
+    border: 2px solid rgb(22, 47, 160);
+}
+
+#form-escolha-destino {
+    margin-left: 45px;
+    margin-right: 45px;
+}
+
+#btn-escolha-destino {
+    background-color: rgb(22, 47, 160);
+}
+
+#p-pacotes-home {
+    margin-bottom: -0px;
+}
+
+#img-salvador {
+    width: 100%;
+    height: auto;
+}
+
+#div-pacotes-home {
+    margin-top: 100px;
+}
+
+#footer {
+    border-top-style: solid;
+    border-top-width: 2px;
+    border-top-color: rgb(22, 47, 160);
+    padding: 10px;
+    margin-top: 50px;
+    background-color: rgb(40, 164, 185);
+    text-align: center;
+}
+
+#btn-sobre-nos {
+    background-color:  rgb(40, 164, 185);
+}
