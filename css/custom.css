@@ -51,6 +51,13 @@
     background-color: rgb(22, 47, 160);
 }
 
+#section-pacotes-home {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(22, 47, 160);
+    padding-bottom: 60px;
+}
+
 #p-pacotes-home {
     margin-bottom: -0px;
 }
@@ -63,7 +70,7 @@
 #div-pacotes-home {
     margin-top: 100px;
 }
-
+ 
 #footer {
     border-top-style: solid;
     border-top-width: 2px;
@@ -76,4 +83,23 @@
 
 #btn-sobre-nos {
     background-color:  rgb(40, 164, 185);
+}
+
+#paris {
+    scale: 90%;
+    max-width: 100%;
+    height: auto;
+    margin-left: -37px;
+}
+
+#div-destinos-populares-home {
+    margin-top: 100px;
+    margin-left: -30px;
+}
+
+#section-destinos-pop-home {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(22, 47, 160);
+    padding-bottom: 50px;
 }
