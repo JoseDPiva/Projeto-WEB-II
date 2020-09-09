@@ -58,7 +58,7 @@
     padding-bottom: 60px;
 }
 
-#p-pacotes-home {
+#p-pacotes-home, #p-novos-lugares-home {
     margin-bottom: -0px;
 }
 
@@ -70,7 +70,16 @@
 #div-pacotes-home {
     margin-top: 100px;
 }
- 
+
+#div-novos-lugares-home {
+    margin-top: 150px;
+}
+
+#img-guilin {
+    height: 90%;
+    margin-top: 30px;
+}
+
 #footer {
     border-top-style: solid;
     border-top-width: 2px;
