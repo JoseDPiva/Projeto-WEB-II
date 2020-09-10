@@ -4,6 +4,7 @@
     font-variant: small-caps;
     font-weight: bold;
     color: rgb(22, 47, 160);
+    text-align: center;
 }
 
 #nav-item {
@@ -12,6 +13,7 @@
 
 #nav-entrar {
     background-color: rgb(22, 47, 160);
+    text-align: center;
 }
 
 #nav-entrar-texto {
@@ -27,17 +29,18 @@
 }
 
 #col-1-top-section {
-    margin-top : 100px;
+    margin-top: 13%;
 }
 
 #img-header {
     width: 100%;
     height: 300px;
     background-size: cover;
+    margin-top: 5%;
 }
 
 #section-top {
-    margin-bottom: 60px;
+    margin-bottom: 5%;
 }
 
 #destino-home-div {
@@ -45,8 +48,8 @@
 }
 
 #form-escolha-destino {
-    margin-left: 45px;
-    margin-right: 45px;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 #btn-escolha-destino {
@@ -57,11 +60,12 @@
     border-bottom-style: solid;
     border-bottom-width: 2px;
     border-bottom-color: rgb(22, 47, 160);
-    padding-bottom: 60px;
+    padding-bottom: 5%;
 }
 
-#p-pacotes-home, #p-novos-lugares-home {
-    margin-bottom: -0px;
+#p-pacotes-home,
+#p-novos-lugares-home {
+    margin-bottom: 0px;
 }
 
 #img-salvador {
@@ -70,16 +74,16 @@
 }
 
 #div-pacotes-home {
-    margin-top: 100px;
+    margin-top: 10%;
 }
 
 #div-novos-lugares-home {
-    margin-top: 150px;
+    margin-top: 13%;
 }
 
 #img-guilin {
-    height: 90%;
-    margin-top: 30px;
+    height: 80%;
+    margin-top: 5%;
 }
 
 #footer {
@@ -87,33 +91,119 @@
     border-top-width: 2px;
     border-top-color: rgb(22, 47, 160);
     padding: 10px;
-    margin-top: 50px;
     background-color: rgb(40, 164, 185);
     text-align: center;
 }
 
 #btn-sobre-nos {
-    background-color:  rgb(40, 164, 185);
+    background-color: rgb(40, 164, 185);
 }
 
 #paris {
     scale: 90%;
     max-width: 100%;
     height: auto;
-    margin-left: -37px;
 }
 
 #div-destinos-populares-home {
-    margin-top: 100px;
-    margin-left: -30px;
+    margin-top: 10%;
 }
 
 #section-destinos-pop-home {
     border-bottom-style: solid;
     border-bottom-width: 2px;
     border-bottom-color: rgb(22, 47, 160);
-    padding-bottom: 50px;
+    padding-bottom: 5%;
 }
 
 /*!--CSS página registro--!*/
 
+#form-login {
+    background-color: rgb(40, 164, 185);
+    width: 300px;
+    height: 320px;
+    justify-items: auto;
+    margin: auto;
+    margin-top: 5%;
+    padding-top: 15px;
+}
+
+#input-email-login,
+#input-senha-login,
+#form-login,
+#inputNome,
+#inputCPF,
+#inputEndereço,
+#numeroEndereço,
+#inputCidadeEstado,
+#inputEmail,
+#inputNumeroCelular,
+#inputNumeroResidencial {
+    border: 2px solid rgb(22, 47, 160);
+}
+
+#btn-form {
+    background-color: rgb(40, 164, 185);
+    border: 2px solid rgb(22, 47, 160);
+    margin-left: 115px;
+    color: rgb(22, 47, 160);
+    font-weight: bold;
+}
+
+#p-form {
+    text-align: center;
+    color: rgb(22, 47, 160);
+    font-weight: bold;
+    font-size: large;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(22, 47, 160);
+    border-bottom-style: solid;
+    padding-bottom: 15px;
+}
+
+#section-login {
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(22, 47, 160);
+    padding-bottom: 4%;
+}
+
+#section-registro-conta {
+    margin-top: 3%;
+    margin-bottom: 4%;
+}
+
+#h2-form-registro {
+    margin-bottom: 2%;
+}
+
+#form-registro-conta {
+    background-color: rgb(40, 164, 185);
+    padding: 30px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgb(22, 47, 160);
+}
+
+#inputNome {
+    width: 500px;
+}
+
+#btn-registro {
+    background-color: rgb(40, 164, 185);
+    border: 2px solid rgb(22, 47, 160);
+    color: rgb(22, 47, 160);
+    font-weight: bold;
+    margin-top: 3%;
+    margin-left: 45%;
+}
+
+#numeroEndereço,
+#inputNumeroCelular {
+    width: 100px;
+}
+
+#inputEndereço,
+#inputEmail {
+    width: 400px;
+}
