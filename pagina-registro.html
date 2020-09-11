@@ -63,7 +63,7 @@
 
     <section class="container" id="section-registro-conta">
 
-        <h2 id="h2-form-registro">Registre um conta de graça aqui:</h2>
+        <h2 id="h2-form-registro">Registre uma conta de graça aqui:</h2>
 
         <form action="" id="form-registro-conta">
 
@@ -71,7 +71,7 @@
 
                 <div class="col-lg-8">
                     <label for="inputNome">Nome completo:</label><br>
-                    <input type="text" name="nome-registro" id="inputNome">
+                    <input type="text" name="nome-registro" id="inputNome" required>
                 </div>
 
                 <div class="col-lg-4">
@@ -102,7 +102,7 @@
 
                 <div class="col-lg-6">
                     <label for="inputEmail">E-mail:</label><br>
-                    <input type="email" name="email" id="inputEmail">
+                    <input type="email" name="email" id="inputEmail" required>
                 </div>
 
                 <div class="col-lg-2">
@@ -111,8 +111,9 @@
                 </div>
 
                 <div class="col-lg-4">
-                    <label for="inputNumeroResidencial">Nº Residencial:</label><br>
-                    <input type="text" name="numeroResidencial" id="inputNumeroResidencial">
+                    <label for="inputSenhaRegistro">Senha:</label><br>
+                    <input type="text" name="senhaRegistro" id="inputSenhaRegistro" maxlength="20" minlength="6"
+                        size="4" required>
                 </div>
             </div>
 

@@ -130,7 +130,10 @@
 
 #input-email-login,
 #input-senha-login,
-#form-login,
+#form-login {
+    border: 2px solid rgb(22, 47, 160);
+}
+
 #inputNome,
 #inputCPF,
 #inputEndereço,
@@ -138,8 +141,9 @@
 #inputCidadeEstado,
 #inputEmail,
 #inputNumeroCelular,
-#inputNumeroResidencial {
+#inputSenhaRegistro {
     border: 2px solid rgb(22, 47, 160);
+    width: 90%;
 }
 
 #btn-form {
@@ -185,25 +189,11 @@
     border-color: rgb(22, 47, 160);
 }
 
-#inputNome {
-    width: 500px;
-}
-
 #btn-registro {
     background-color: rgb(40, 164, 185);
     border: 2px solid rgb(22, 47, 160);
     color: rgb(22, 47, 160);
     font-weight: bold;
-    margin-top: 3%;
+    margin-top: 5%;
     margin-left: 45%;
-}
-
-#numeroEndereço,
-#inputNumeroCelular {
-    width: 100px;
-}
-
-#inputEndereço,
-#inputEmail {
-    width: 400px;
 }
