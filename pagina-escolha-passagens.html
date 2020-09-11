@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Passagens.com</title>
+    <title>Passagens - Passagens.com</title>
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -46,80 +46,106 @@
         </div>
     </nav>
 
-    <section class="container" id="section-login">
+    <section id="section-passagens-header" class="container">
 
-        <form action="" id="form-login" class="form">
+        <div id="div-header-passagens">
 
-            <p id="p-form">Entre em sua conta:</p>
-            <label for="email-login" class="ml-5">E-mail:</label><br>
-            <input type="email" class="ml-5" placeholder="E-mail" name="email-login" id="input-email-login" required
-                autofocus><br><br>
-            <label for="senha-login" class="ml-5">Senha:</label><br>
-            <input type="password" class="ml-5" placeholder="Senha" name="senha-login" id="input-senha-login" size="20"
-                maxlength="20" minlength="6" required><br><br>
-            <button type="submit" class="btn" id="btn-form">Entrar</button>
-        </form>
+            <h3>Encontre as férias perfeitas com facilidade, conforto e economia</h3>
+            <ul>
+                <li>A maior variedade de destinos no mercado</li>
+                <li>Reserve hotéis na compra da passagem</li>
+                <li>Centenas de companias aéreas ao seu dispor</li>
+            </ul>
+
+        </div>
     </section>
 
-    <section class="container" id="section-registro-conta">
+    <section class="container" id="section-escolha-passagem">
 
-        <h2 id="h2-form-registro">Registre uma conta de graça aqui:</h2>
+        <div id="div-escolha-passagem">
 
-        <form action="" id="form-registro-conta">
+            <h3 style="font-variant: small-caps">PASSAGEM</h3><br>
 
-            <div class="row">
+            <form action="" id="form-escolha-passagem">
 
-                <div class="col-lg-8">
-                    <label for="inputNome">Nome completo:</label><br>
-                    <input type="text" name="nome-registro" id="inputNome" required>
+                <div class="row">
+
+                    <div class="col-lg-4">
+
+                        <label for="inputLocalPartida">Partindo de:</label><br>
+                        <input type="text" name="inputLocalPartida" placeholder="Partindo de..." id="inputLocalPartida"
+                            required><br><br>
+                        <label for="inputLocalDestino">Com destino a:</label><br>
+                        <input type="text" name="inputLocalDestino" placeholder="Com destino a..."
+                            id="inputLocalDestino" required> <br><br>
+                        <input type="radio" name="idaOuVolta" id="inputIda" checked="checked">
+                        <label for="inputIda">Ida</label>
+                        <input type="radio" name="idaOuVolta" id="inputIdaEVolta">
+                        <label for="inputIdaeEVolta">Ida e volta</label>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <label for="inputDataPartida">Data de saída:</label><br>
+                        <input type="date" name="inputDataPartida" id="inputDataPartida" max="" required><br><br>
+                        <label for="inputDataVolta">Data de volta:</label><br>
+                        <input type="date" name="inputDataVolta" id="inputDataVolta"><br><br>
+                    </div>
+
+                    <div class="col-lg-4" id="div-quantidade-passagens">
+                        <label for="inputQuantidadeAdulto">Quantidade:</label><br>
+                        <label for="inputQuantidadeAdulto">Adulto(a):</label>
+                        <input type="number" name="inputQuantidadeAdulto" id="inputQuantidadeAdulto" min="0"><br><br>
+                        <label for="inputQuantidadeCrianças">Crianças:</label>
+                        <input type="number" name="inputQuantidadeCrianças" id="inputQuantidadeCrianças"
+                            min="0"><br><br>
+                        <label for="inputQuantidadeBebes">Bebes:</label>
+                        <input type="number" name="inputQuantidadeBebes" id="inputQuantidadeBebes" min="0"><br><br>
+                        <label for="precoSubTotal">Sub-total:</label>
+                        <input type="text" name="precoSubTotal" id="precoSubTotal" readonly><br><br>
+                        <input type="submit" name="adicionarCarrinho" id="inputAdicionarCarrinho"
+                            value="Adicionar ao carrinho">
+                    </div>
                 </div>
+            </form>
 
-                <div class="col-lg-4">
-                    <label for="inputCPF">CPF:</label><br>
-                    <input type="text" name="CPF-registro" id="inputCPF">
-                </div>
-            </div>
-
-            <div class="row mt-3">
-
-                <div class="col-lg-6">
-                    <label for="inputEndereço">Endereço:</label><br>
-                    <input type="text" name="endereço" id="inputEndereço">
-                </div>
-
-                <div class="col-lg-2">
-                    <label for="inputNumeroEndereço">Nº:</label><br>
-                    <input type="text" name="numeroEndereço" id="numeroEndereço">
-                </div>
-
-                <div class="col-lg-4">
-                    <label for="inputCidadeEstado">Cidade/Estado:</label><br>
-                    <input type="text" name="cidadeEstado" id="inputCidadeEstado">
-                </div>
-            </div>
-
-            <div class="row mt-3">
-
-                <div class="col-lg-6">
-                    <label for="inputEmail">E-mail:</label><br>
-                    <input type="email" name="email" id="inputEmail" required>
-                </div>
-
-                <div class="col-lg-2">
-                    <label for="inputNumeroCelular">Nº Celular:</label><br>
-                    <input type="text" name="numeroCelular" id="inputNumeroCelular">
-                </div>
-
-                <div class="col-lg-4">
-                    <label for="inputSenhaRegistro">Senha:</label><br>
-                    <input type="text" name="senhaRegistro" id="inputSenhaRegistro" maxlength="20" minlength="6"
-                        size="4" required>
-                </div>
-            </div>
-
-            <button type="submit" class="btn" id="btn-registro">Registrar</button>
-        </form>
+        </div>
     </section>
+
+    <section class="container">
+
+        <div id="div-escolha-hotel">
+
+            <h3>HOTEL</h3>
+
+            <form action="">
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+
+                        <label for="inputDestinoHotel">Destino:</label><br>
+                        <input type="text" name="inputDestinoHotel" id="inputDestinoHotel"
+                            placeholder="Entre o nome da cidade ou do Hotel"><br><br>
+                        <label for="inputQuartoHotel">Quarto:</label><br>
+                        <input type="text" name="inputQuartoHotel" id="inputQuartoHotel"
+                            placeholder="1 Quarto, 1 Pessoa">
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label for="dataCheckIn">Check-in / Check-out:</label><br>
+                        <input type="date" name="dataCheckIn" id="dataCheckIn">
+                        <input type="date" name="dataCheckOut" id="dataCheckOut"><br><br>
+                        <label for="precoSubTotal">Sub-total:</label><br>
+                        <input type="text" name="precoSubTotal" id="precoSubTotal" readonly><br><br>
+                        <input type="submit" name="adicionarCarrinho" id="inputAdicionarCarrinho"
+                            value="Adicionar ao carrinho">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <button id="btn-finalizar-compra">FINALIZAR COMPRA</button>
 
     <section>
 

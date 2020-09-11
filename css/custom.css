@@ -197,3 +197,60 @@
     margin-top: 5%;
     margin-left: 45%;
 }
+
+#section-passagens-header {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    padding-bottom: 2%;
+    border-bottom-color: rgb(22, 47, 160);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+
+#div-header-passagens {
+    background-color: rgb(40, 164, 185);
+    width: 78%;
+    color: rgb(22, 47, 160);
+    margin: auto;
+    font-weight: bold;
+    padding: 3%;
+    padding-bottom: 1%;
+}
+
+#div-escolha-passagem,
+#div-escolha-hotel {
+    background-color: rgb(40, 164, 185);
+    padding: 3%;
+    margin-bottom: 4%;
+    border: 2px solid rgb(22, 47, 160);
+}
+
+#form-escolha-passagem input {
+    border: 2px solid rgb(22, 47, 160);
+}
+
+#div-quantidade-passagens input {
+    float: right;
+}
+
+#inputAdicionarCarrinho {
+    color: rgb(22, 47, 160);
+    font-weight: bold;
+}
+
+#section-escolha-passagem {
+    border-bottom-width: 2px;
+    border-bottom-color: rgb(22, 47, 160);
+    border-bottom-style: solid;
+    margin-bottom: 3%;
+}
+
+#btn-finalizar-compra {
+    border: 2px solid rgb(22, 47, 160);
+    margin: 0 auto;
+    margin-bottom: 3%;
+    margin-left: 45%;
+    padding: 1%;
+    color: rgb(22, 47, 160);
+    font-weight: bold;
+}
