@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento - Passagens.com</title>
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="index.html">Passagens.com</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSite">
+
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item mr-2 mb-1" id="nav-item">
+                        <a href="pagina-escolha-passagens.html" class="nav-link" id="item-nav">Passagens</a>
+                    </li>
+
+                    <li class="nav-item mr-2 mb-1" id="nav-item">
+                        <a href="" class="nav-link" id="item-nav">Destinos</a>
+                    </li>
+
+                    <li class="nav-item mr-2 mb-1" id="nav-item">
+                        <a href="" class="nav-link" id="item-nav">Pacotes</a>
+                    </li>
+
+                    <li class="nav-item mr-2 mb-1" id="nav-entrar">
+                        <a href="pagina-registro.html" class="nav-link" id="nav-entrar-texto">Entrar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container">
+
+        <div id="div-input-email-voucher" class="row">
+
+            <div class="col-lg-8">
+
+                <label for="inputEmailEnvioVoucher" style="font-size: 170%;">E-mail para envio do voucher:</label><br>
+                <input type="email" placeholder="Insira o e-mail" name="inputEmailEnvioVoucher"
+                    id="inputEmailEnvioVoucher" required autofocus>
+            </div>
+
+            <div class="col-lg-4" id="div-valor-pagamento">
+
+                <label for="inputValorPagamento" id="labelValorPagamento">Total a pagar:</label>
+                <input type="text" name="inputValorPagamento" id="inputValorPagamento" readonly>
+            </div>
+        </div>
+
+        <div id="div-escolha-forma-pagamento">
+
+            <h3 style="text-decoration: underline;">Forma de pagamento:</h3>
+
+            <input type="radio" id="inputPagamentoCredito" name="inputPagamento">
+            <label for="inputPagamentoCredito">Cartão de crédito</label><br>
+            <input type="radio" id="inputPagamentoDebito" name="inputPagamento">
+            <label for="inputPagamentoDebito">Cartão de débito</label>
+
+        </div>
+
+        <div id="div-lista-viajantes">
+
+            <h3 style="text-decoration: underline;">Pessoas que irão viajar:</h3>
+            <h4 id="h4-lista-viajantes-adultos">Adulto(s):</h4>
+            <div class="row mb-3">
+
+                <div class="col-lg-6">
+
+                    <label for="inputNomeViajanteAdulto">Nome Completo: </label>
+                    <input type="text" name="inputNomeViajanteAdulto" id="inputNomeViajanteAdulto">
+                </div>
+
+                <div class="col-lg-4">
+
+                    <label for="inputCPFViajanteAdulto">CPF:</label>
+                    <input type="text" name="inputCPFViajanteAdulto" id="inputCPFViajanteAdulto">
+                </div>
+
+                <div class="col-lg-2">
+
+                    <button id="btn-adicionar-viajante-adulto">Adicionar</button>
+                </div>
+            </div>
+
+            <h4>Criança(s):</h4>
+            <div class="row mb-3">
+
+                <div class="col-lg-6">
+                    <label for="inputNomeViajanteCriança">Nome Completo: </label>
+                    <input type="text" name="inputNomeViajanteCriança" id="inputNomeViajanteCriança">
+                </div>
+
+                <div class="col-lg-4">
+                    <label for="inputCPFViajanteCriança">CPF:</label>
+                    <input type="text" name="inputCPFViajanteCriança" id="inputCPFViajanteCriança">
+                </div>
+
+                <div class="col-lg-2">
+                    <button id="btn-adicionar-viajante-criança">Adicionar</button>
+                </div>
+            </div>
+
+            <h4>Bebe(s):</h4>
+            <div class="row" id="div-lista-viajantes-bebe">
+
+                <div class="col-lg-6">
+                    <label for="inputNomeViajanteBebe">Nome Completo: </label>
+                    <input type="text" name="inputNomeViajanteBebe" id="inputNomeViajanteBebe">
+                </div>
+
+                <div class="col-lg-4">
+                    <label for="inputCPFViajanteBebe">CPF:</label>
+                    <input type="text" name="inputCPFViajanteBebe" id="inputCPFViajanteBebe">
+                </div>
+
+                <div class="col-lg-2">
+                    <button id="btn-adicionar-viajante-bebe">Adicionar</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="div-confirmacao-pagamento">
+
+            <h3 style="text-decoration: underline;">Finalizar a compra</h3><br>
+            <label for="valorFinalPagamento">Valor final a pagar: </label>
+            <input type="text" name="valorFinalPagamento" id="valorFinalPagamento" readonly>
+            <label for="formaPagamentoFinal">Forma de pagamento: </label>
+            <input type="text" name="formaPagamentoFinal" id="formaPagamentoFinal" readonly>
+            <button id="btn-finalizar-pagamento">Finalizar a compra</button>
+        </div>
+    </section>
+
+    <section>
+
+        <footer id="footer">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-3 dropdown">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                            style="color:black">Ajuda</button>
+                        <div class="dropdown-menu">
+                            <a href="" class="dropdown-item">Pagamentos</a>
+                            <a href="" class="dropdown-item">Pagamentos</a>
+                            <a href="" class="dropdown-item">Pagamentos</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3" dropdwon>
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                            style="color:black">Contato</button>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-header">Sociais</div>
+                            <a href="" class="dropdown-item">Instagram</a>
+                            <a href="" class="dropdown-item">Facebook</a>
+                            <a href="" class="dropdown-item">Twitter</a>
+                            <div class="dropdown-header">Fale Conosco:</div>
+                            <span class="dropdown-item-text">0800-123-4567</span>
+                            <span class="dropdown-item-text">contato@email.com</span>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <button class="btn" style="color:black" id="btn-sobre-nos" type="button" data-toggle="collapse"
+                            data-target="#sobre-nos">Sobre nós</button>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <button class="btn" style="color:black" type="button" data-toggle="collapse"
+                            data-target="#termos">
+                            Termos e condições
+                        </button>
+                    </div>
+
+                    <div id="sobre-nos" class="collapse">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Lorem ipsum
+                        dolor sit
+                        amet,
+                        consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                    <div id="termos" class="collapse">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+                </div>
+            </div>
+        </footer>
+    </section>
+</body>
+
+</html>

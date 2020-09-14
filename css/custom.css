@@ -198,6 +198,9 @@
     margin-left: 45%;
 }
 
+/*!--CSS página de escolha de passagem--!*/
+
+
 #section-passagens-header {
     margin-top: 2%;
     margin-bottom: 3%;
@@ -252,5 +255,84 @@
     margin-left: 45%;
     padding: 1%;
     color: rgb(22, 47, 160);
+    font-weight: bold;
+}
+
+/*!--CSS página de pagamento--!*/
+
+#div-input-email-voucher {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding-bottom: 2%;
+}
+
+#inputEmailEnvioVoucher {
+    border: 2px solid rgb(22, 47, 160);
+    width: 50%;
+}
+
+#inputValorPagamento {
+    border: hidden;
+    margin-right: 2%;
+}
+
+#labelValorPagamento {
+    font-size: 150%;
+    padding-top: 2%;
+}
+
+#div-valor-pagamento {
+    border: 2px solid rgb(22, 47, 160);
+    padding: 1%;
+}
+
+#h4-lista-viajantes-adultos {
+    margin-top: 2%;
+}
+
+#inputNomeViajanteAdulto,
+#inputCPFViajanteAdulto,
+#inputNomeViajanteCriança,
+#inputCPFViajanteCriança,
+#inputNomeViajanteBebe,
+#inputCPFViajanteBebe {
+    border: 2px solid rgb(22, 47, 160);
+    width: 70%;
+
+}
+
+#btn-adicionar-viajante-adulto,
+#btn-adicionar-viajante-criança,
+#btn-adicionar-viajante-bebe {
+    background-color: rgb(40, 164, 185);
+    border: 2px solid rgb(22, 47, 160);
+    color: rgb(22, 47, 160);
+    width: 100%;
+    height: 100%;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+#div-lista-viajantes-bebe {
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+    border-bottom: 2px solid rgb(22, 47, 160);
+}
+
+#valorFinalPagamento,
+#formaPagamentoFinal {
+    border: hidden;
+}
+
+#div-confirmacao-pagamento {
+    margin-bottom: 3%;
+}
+
+#btn-finalizar-pagamento {
+    background-color: rgb(40, 164, 185);
+    border: 2px solid rgb(22, 47, 160);
+    color: rgb(22, 47, 160);
+    height: 100%;
+    font-size: 120%;
     font-weight: bold;
 }
