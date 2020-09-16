@@ -228,6 +228,22 @@
     border: 2px solid rgb(22, 47, 160);
 }
 
+#div-sugestao-partida {
+    background-color: rgb(93, 218, 240);
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+    display: none;
+}
+
+#div-sugestao-destino {
+    background-color: rgb(93, 218, 240);
+    position: absolute;
+    width: 200px;
+    z-index: 2;
+    display: none;
+}
+
 #form-escolha-passagem input {
     border: 2px solid rgb(22, 47, 160);
 }
