@@ -252,7 +252,7 @@
     float: right;
 }
 
-#inputAdicionarCarrinho {
+#inputSelecionarPassagem {
     color: rgb(22, 47, 160);
     font-weight: bold;
 }
@@ -264,14 +264,30 @@
     margin-bottom: 3%;
 }
 
-#btn-finalizar-compra {
+#div-escolha-hotel input {
     border: 2px solid rgb(22, 47, 160);
-    margin: 0 auto;
+}
+
+#div-escolha-hotel {
+    border: hidden;
+    padding-bottom: 1%;
+}
+
+#btn-finalizar-compra,
+#btn-comprar-hotel {
+    border: 2px solid rgb(22, 47, 160);
     margin-bottom: 3%;
-    margin-left: 45%;
     padding: 1%;
     color: rgb(22, 47, 160);
     font-weight: bold;
+}
+
+#btn-finalizar-compra {
+    margin-bottom: 3%;
+}
+
+#div-finalizar-compra {
+    text-align: center;
 }
 
 /*!--CSS página de pagamento--!*/

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Passagens - Passagens.com</title>
-    <script src="js/javascript.js"></script>
+    <script src="js/js-pg-escolha-passagem.js"></script>
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -13,7 +13,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body onload="selecaoData()">
     <nav class="navbar navbar-expand-lg navbar-light" id="nav-bar">
 
         <div class="container">
@@ -81,7 +81,7 @@
                         <input type="text" name="inputLocalDestino" placeholder="Com destino a..."
                             id="inputLocalDestino" required autocomplete="off"> <br>
                         <div id="div-sugestao-destino"></div><br>
-                        <input type="radio" name="idaOuVolta" id="inputIda" checked="checked">
+                        <input type="radio" name="idaOuVolta" id="inputIda" checked>
                         <label for="inputIda">Ida</label>
                         <input type="radio" name="idaOuVolta" id="inputIdaEVolta">
                         <label for="inputIdaeEVolta">Ida e volta</label>
@@ -97,16 +97,18 @@
                     <div class="col-lg-4" id="div-quantidade-passagens">
                         <label for="inputQuantidadeAdulto">Quantidade:</label><br>
                         <label for="inputQuantidadeAdulto">Adulto(a):</label>
-                        <input type="number" name="inputQuantidadeAdulto" id="inputQuantidadeAdulto" min="0"><br><br>
-                        <label for="inputQuantidadeCrianças">Crianças:</label>
-                        <input type="number" name="inputQuantidadeCrianças" id="inputQuantidadeCrianças"
-                            min="0"><br><br>
+                        <input type="number" name="inputQuantidadeAdulto" id="inputQuantidadeAdulto" min="0"
+                            value="0"><br><br>
+                        <label for="inputQuantidadeCriancas">Crianças:</label>
+                        <input type="number" name="inputQuantidadeCriancas" id="inputQuantidadeCriancas" min="0"
+                            value="0"><br><br>
                         <label for="inputQuantidadeBebes">Bebes:</label>
-                        <input type="number" name="inputQuantidadeBebes" id="inputQuantidadeBebes" min="0"><br><br>
+                        <input type="number" name="inputQuantidadeBebes" id="inputQuantidadeBebes" min="0"
+                            value="0"><br><br>
                         <label for="precoSubTotal">Sub-total:</label>
                         <input type="text" name="precoSubTotal" id="precoSubTotal" readonly><br><br>
-                        <input type="submit" name="adicionarCarrinho" id="inputAdicionarCarrinho"
-                            value="Adicionar ao carrinho">
+                        <input type="submit" name="selecionarPassagem" id="inputSelecionarPassagem"
+                            value="Selecionar Passagem (s)" onsubmit="return false">
                     </div>
                 </div>
             </form>
@@ -122,13 +124,13 @@
 
             <form action="">
 
-                <div class="row">
+                <div class="row" id="div-escolha-hotel">
 
                     <div class="col-lg-6">
 
                         <label for="inputDestinoHotel">Destino:</label><br>
                         <input type="text" name="inputDestinoHotel" id="inputDestinoHotel"
-                            placeholder="Entre o nome da cidade ou do Hotel"><br><br>
+                            placeholder="Entre o nome da cidade"><br><br>
                         <label for="inputQuartoHotel">Quarto:</label><br>
                         <input type="text" name="inputQuartoHotel" id="inputQuartoHotel"
                             placeholder="1 Quarto, 1 Pessoa">
@@ -140,15 +142,16 @@
                         <input type="date" name="dataCheckOut" id="dataCheckOut"><br><br>
                         <label for="precoSubTotal">Sub-total:</label><br>
                         <input type="text" name="precoSubTotal" id="precoSubTotal" readonly><br><br>
-                        <input type="submit" name="adicionarCarrinho" id="inputAdicionarCarrinho"
-                            value="Adicionar ao carrinho">
+                        <input type="submit" name="comprar-hotel" id="btn-comprar-hotel" value="Selecionar Estadia">
                     </div>
                 </div>
             </form>
         </div>
     </section>
 
-    <button id="btn-finalizar-compra">FINALIZAR COMPRA</button>
+    <div id="div-finalizar-compra">
+        <button type="submit" id="btn-finalizar-compra" onclick="finalizarCompra()">FINALIZAR COMPRA</button>
+    </div>
 
     <section>
 
