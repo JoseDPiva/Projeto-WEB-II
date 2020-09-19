@@ -125,7 +125,7 @@ function procuraLocalDestino() {
         }
     }
 
-    if (input == '') {
+    if (inputLocalDestino.value == '') {
         div.innerHTML = '';
     }
 }
@@ -156,20 +156,11 @@ function selecaoData() {
 };
 
 function calculaPrecoPassagem() {
-    let d = $('inputLocalDestino').value;
-    let n = d.indexOf(',');
-    let destinoNome = d.substring(0, n);
     let subtotal = $('precoSubTotal');
     let qtdAdulto = parseFloat($('inputQuantidadeAdulto').value);
     let qtdCriancas = parseFloat($('inputQuantidadeCriancas').value);
     let qtdBebes = parseFloat($('inputQuantidadeBebes').value);
-    let destino;
-
-    for (let i = 0; i < listaDestinos.length; i++) {
-        if (listaDestinos[i].nome.startsWith(destinoNome)) {
-            destino = listaDestinos[i];
-        }
-    }
+    let destino = procuraDestino($('inputLocalDestino'));
 
     if (isNaN(qtdAdulto)) {
         qtdAdulto = 0;
@@ -188,6 +179,20 @@ function calculaPrecoPassagem() {
     }
 }
 
+let procuraDestino = function (d) {
+    d = d.value;
+    let n = d.indexOf(',');
+    let destinoNome = d.substring(0, n);
+
+    for (i in listaDestinos) {
+        if (listaDestinos[i].nome.startsWith(destinoNome)) {
+            destino = listaDestinos[i];
+        }
+    }
+
+    return destino;
+}
+
 function selecionarPassagem() {
     let qtdAdulto = parseFloat($('inputQuantidadeAdulto').value);
     let qtdCriancas = parseFloat($('inputQuantidadeCriancas').value);
@@ -198,16 +203,17 @@ function selecionarPassagem() {
     let dataPartida = $('inputDataPartida').value;
     let dataVolta = $('inputDataVolta').value;
     let preco = $('precoSubTotal').value;
+    let idaOuVolta = document.getElementsByName('idaOuVolta');
 
     if (destino == '' || partida == '') {
         alert('Por favor preencha o local de destino e de partida.');
         return false;
-    } else if ($('inputIda').checked) {
+    } else if (idaOuVolta[0].checked) {
         if ($('inputDataPartida').value == '') {
             alert('Por favor seleciona  uma data de partida.');
             return false;
         }
-    } else if ($('inputIdaEVolta').checked) {
+    } else if (idaOuVolta[1].checked) {
         if ($('inputDataPartida').value == '' || $('inputDataVolta').value == '') {
             alert('Por favor selecione datas de partida e de volta.');
             return false;
@@ -216,6 +222,9 @@ function selecionarPassagem() {
 
     if (qtdAdulto == 0) {
         alert('Por favor, selecione pelo menos uma passagem para adulto.');
+        return false;
+    } else if (partida == destino) {
+        alert('Os locais de partida e destino precisam ser diferentes.');
         return false;
     } else if (qtdTotal == 1) {
         let c = confirm(`Passagem selecionada:
@@ -249,10 +258,6 @@ function selecionarPassagem() {
     return false;
 }
 
-function corrigeValor() {
-    $('inputQuantidadeAdulto').value = 0;
-}
-
 function finalizarCompra() {
     document.location = 'pagina-pagamento.html';
 }
@@ -264,6 +269,6 @@ window.addEventListener("load", function () {
     $('div-sugestao-destino').onclick = selecionaLocalDestino;
     $('div-quantidade-passagens').onchange = calculaPrecoPassagem;
     $('inputSelecionarPassagem').onclick = selecionarPassagem;
-    $('inputIda').addEventListener('change', corrigeValor);
-    $('inputIdaEVolta').addEventListener('change', corrigeValor);
+    $('inputIda').onchange = () => $('inputQuantidadeAdulto').value = 0;
+    $('inputIdaEVolta').onchange = () => $('inputQuantidadeAdulto').value = 0;
 });
