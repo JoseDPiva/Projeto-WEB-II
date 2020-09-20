@@ -170,13 +170,15 @@ function calculaPrecoPassagem() {
         qtdCriancas = 0;
     }
 
-    if ($('inputIdaEVolta').checked) {
-        subtotal.value = destino.preco * ((qtdCriancas + qtdBebes + qtdAdulto) * 2);
-    } else if ((qtdCriancas + qtdBebes + qtdAdulto) == 0) {
-        subtotal.value = 0;
-    } else {
-        subtotal.value = destino.preco * (qtdCriancas + qtdBebes + qtdAdulto);
-    }
+    (function () {
+        if ($('inputIdaEVolta').checked) {
+            subtotal.value = destino.preco * ((qtdCriancas + qtdBebes + qtdAdulto) * 2);
+        } else if ((qtdCriancas + qtdBebes + qtdAdulto) == 0) {
+            subtotal.value = 0;
+        } else {
+            subtotal.value = destino.preco * (qtdCriancas + qtdBebes + qtdAdulto);
+        }
+    })();
 }
 
 let procuraDestino = function (d) {
@@ -258,8 +260,26 @@ function selecionarPassagem() {
     return false;
 }
 
-function finalizarCompra() {
-    document.location = 'pagina-pagamento.html';
+function relogio() {
+    let data = new Date();
+    let hora = data.getHours();
+    let minuto = data.getMinutes();
+    let segundo = data.getSeconds();
+    let horario = '';
+
+    function defineHorario() {
+        if (hora < 10) {
+            hora = '0' + hora;
+        } else if (minuto < 10) {
+            minuto = '0' + minuto;
+        } else if (segundo < 10) {
+            segundo = '0' + segundo;
+        }
+
+        return horario = hora + ':' + minuto + ':' + segundo;
+    }
+
+    $('divRelogio').innerHTML = 'Horário de Brasília: ' + defineHorario();
 }
 
 window.addEventListener("load", function () {
@@ -271,4 +291,5 @@ window.addEventListener("load", function () {
     $('inputSelecionarPassagem').onclick = selecionarPassagem;
     $('inputIda').onchange = () => $('inputQuantidadeAdulto').value = 0;
     $('inputIdaEVolta').onchange = () => $('inputQuantidadeAdulto').value = 0;
+    setInterval(relogio, 1000);
 });

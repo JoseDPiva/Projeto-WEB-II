@@ -2,6 +2,12 @@ let $ = function (id) {
     return document.getElementById(id);
 }
 
+function promptLocal() {
+    let localPartida = prompt("De que cidade você partirá?");
+
+    $('localpartida').value = localPartida;
+}
+
 let realsaImagens = function () {
     let x = document.getElementsByTagName('img');
 
@@ -16,7 +22,7 @@ let realsaImagens = function () {
     }
 }
 
-function validaLocalPartida(event) {
+function validaEntrada(event) {
     let code = event.charCode;
 
     if ((code < 97 || code > 122) && (code < 65 || code > 90)) {
@@ -27,6 +33,8 @@ function validaLocalPartida(event) {
 }
 
 window.addEventListener('load', function () {
+    setTimeout(promptLocal, 3000);
     document.querySelector('img').addEventListener('mouseover', realsaImagens);
-    document.querySelector('#localpartida').addEventListener('keypress', validaLocalPartida);
+    $('localpartida').addEventListener('keypress', validaEntrada);
+    $('localdestino').addEventListener('keypress', validaEntrada);
 })

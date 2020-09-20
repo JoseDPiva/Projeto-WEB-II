@@ -5,21 +5,21 @@ Repositório para o projeto de Desenvolvimento para WEB 2
 
 Caixas de Diálogo
 
-- [ ] prompt
+- [x] prompt
 - [x] alert
 - [x] confirm
 
 Temporizadores
 
-- [ ] setInterval
-- [ ] setTimeout
+- [x] setInterval
+- [x] setTimeout
 
 Funções
 
 - [x] Função anônima com argumento
 - [x] Função anônima sem argumento
 - [x] Função anônima com retorno
-- [ ] Função auto-executável
+- [x] Função auto-executável
 - [x] Função com nome
 - [ ] Função aninhada/local - declarar uma função dentro de outra
 - [ ] Passagem de uma função como parâmetro

@@ -52,6 +52,11 @@
     margin-right: 5%;
 }
 
+#localpartida,
+#localdestino {
+    border: 2px solid rgb(22, 47, 160);
+}
+
 #btn-escolha-destino {
     background-color: rgb(22, 47, 160);
 }
