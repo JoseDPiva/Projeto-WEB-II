@@ -130,7 +130,7 @@ function procuraLocalDestino() {
     }
 }
 
-function selecionaLocalDestino() {
+let selecionaLocalDestino = function () {
     $('inputLocalDestino').value = $('div-sugestao-destino').innerHTML;
 
     if ($('inputLocalDestino').value == $('div-sugestao-destino').innerHTML) {
@@ -156,7 +156,6 @@ function selecaoData() {
 };
 
 function calculaPrecoPassagem() {
-    let subtotal = $('precoSubTotal');
     let qtdAdulto = parseFloat($('inputQuantidadeAdulto').value);
     let qtdCriancas = parseFloat($('inputQuantidadeCriancas').value);
     let qtdBebes = parseFloat($('inputQuantidadeBebes').value);
@@ -171,6 +170,7 @@ function calculaPrecoPassagem() {
     }
 
     (function () {
+        let subtotal = $('precoSubTotal');
         if ($('inputIdaEVolta').checked) {
             subtotal.value = destino.preco * ((qtdCriancas + qtdBebes + qtdAdulto) * 2);
         } else if ((qtdCriancas + qtdBebes + qtdAdulto) == 0) {
@@ -265,9 +265,10 @@ function relogio() {
     let hora = data.getHours();
     let minuto = data.getMinutes();
     let segundo = data.getSeconds();
-    let horario = '';
 
     function defineHorario() {
+        let horario = '';
+
         if (hora < 10) {
             hora = '0' + hora;
         } else if (minuto < 10) {
@@ -285,7 +286,7 @@ function relogio() {
 window.addEventListener("load", function () {
     $('inputLocalPartida').onkeyup = procuraLocalPartida;
     $('inputLocalDestino').onkeyup = procuraLocalDestino;
-    $('div-sugestao-partida').onclick = selecionaLocalPartida;
+    document.querySelector('#div-sugestao-partida').onclick = selecionaLocalPartida;
     $('div-sugestao-destino').onclick = selecionaLocalDestino;
     $('div-quantidade-passagens').onchange = calculaPrecoPassagem;
     $('inputSelecionarPassagem').onclick = selecionarPassagem;

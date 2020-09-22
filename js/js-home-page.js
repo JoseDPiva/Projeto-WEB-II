@@ -32,9 +32,9 @@ function validaEntrada(event) {
     return false;
 }
 
-window.addEventListener('load', function () {
+window.onload = function () {
     setTimeout(promptLocal, 3000);
     document.querySelector('img').addEventListener('mouseover', realsaImagens);
     $('localpartida').addEventListener('keypress', validaEntrada);
     $('localdestino').addEventListener('keypress', validaEntrada);
-})
+}
