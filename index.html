@@ -68,13 +68,32 @@
 
     <div id="destino-home-div">
 
-      <form action="" class="form-inline p-3" id="form-escolha-destino">
+      <form action="pagina-escolha-passagens.html" class="p-3" autocomplete="off" method="GET">
 
-        <label for="localpartida" class="mr-sm-2 ml-sm-5">Saindo de:</label>
-        <input type="text" name="" id="localpartida" class="mr-sm-5">
-        <label for="localdestino" class="mr-sm-2">Com destino à:</label>
-        <input type="text" name="" id="localdestino" class="mr-sm-5 mb-2 mb-lg-0">
-        <button type="submit" class="ml-sm-5 btn-primary btn" id="btn-escolha-destino">Procurar</button>
+        <div class="row" style="align-items: center;">
+
+          <div class="col-lg-2">
+            <label for="localpartida" class="ml-5" style="margin: auto;">Saindo de:</label>
+          </div>
+
+          <div class="col-lg-3">
+            <input type="text" name="localpartida" id="localpartida"><br>
+            <div id="div-sugestao-partida-home"></div>
+          </div>
+
+          <div class="col-lg-2">
+            <label for="localdestino" class="ml-2" style="margin: auto;">Com destino à:</label>
+          </div>
+
+          <div class="col-lg-3">
+            <input type="text" name="localdestino" id="localdestino"><br>
+            <div id="div-sugestao-destino-home"></div>
+          </div>
+
+          <div class="col-lg-2">
+            <button type="submit" class="btn-primary btn" id="btn-escolha-destino">Procurar</button><br>
+          </div>
+        </div>
       </form>
     </div>
   </section>

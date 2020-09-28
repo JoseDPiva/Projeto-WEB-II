@@ -47,18 +47,26 @@
     border: 2px solid rgb(22, 47, 160);
 }
 
-#form-escolha-destino {
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
 #localpartida,
 #localdestino {
     border: 2px solid rgb(22, 47, 160);
+    position: relative;
+    display: inline-block;
+    margin: 0;
+}
+
+#div-sugestao-partida-home,
+#div-sugestao-destino-home {
+    background-color: rgb(93, 218, 240);
+    position: absolute;
+    width: 200px;
+    z-index: 99;
+    display: none;
 }
 
 #btn-escolha-destino {
     background-color: rgb(22, 47, 160);
+
 }
 
 #section-pacotes-home {
@@ -233,19 +241,12 @@
     border: 2px solid rgb(22, 47, 160);
 }
 
-#div-sugestao-partida {
-    background-color: rgb(93, 218, 240);
-    position: absolute;
-    width: 200px;
-    z-index: 2;
-    display: none;
-}
-
+#div-sugestao-partida,
 #div-sugestao-destino {
     background-color: rgb(93, 218, 240);
     position: absolute;
     width: 200px;
-    z-index: 2;
+    z-index: 99;
     display: none;
 }
 
@@ -271,11 +272,6 @@
 
 #div-escolha-hotel input {
     border: 2px solid rgb(22, 47, 160);
-}
-
-#div-escolha-hotel {
-    border: hidden;
-    padding-bottom: 1%;
 }
 
 #btn-finalizar-compra,

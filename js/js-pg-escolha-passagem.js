@@ -5,77 +5,105 @@ let $ = function (id) {
 let listaDestinos = [{
         nome: 'Paris',
         pais: 'França',
-        preco: 2000
+        preco: 2000,
+        nomeHotel: 'Rose Bourbon',
+        precoHotel: 600
     },
     {
         nome: 'Salvador',
         pais: 'Brasil',
-        preco: 1000
+        preco: 1000,
+        nomeHotel: 'Alah Mar',
+        precoHotel: 200
     },
     {
         nome: 'Cairo',
         pais: 'Egito',
-        preco: 1500
+        preco: 1500,
+        nomeHotel: 'Ramses Hilton',
+        precoHotel: 400
     },
     {
         nome: 'Orlando',
         pais: 'EUA',
-        preco: 2000
+        preco: 2000,
+        nomeHotel: 'Crowne Plaza Orlando',
+        precoHotel: 450
     },
     {
         nome: 'Madri',
         pais: 'Espanha',
-        preco: 1750
+        preco: 1750,
+        nomeHotel: 'Avenida Gran Via',
+        precoHotel: 250
     },
     {
         nome: 'Fernando de Noronha',
         pais: 'Brasil',
-        preco: 1500
+        preco: 1500,
+        nomeHotel: 'Tesouro de Noronha',
+        precoHotel: 900
     },
     {
         nome: 'Rio de Janeiro',
         pais: 'Brasil',
-        preco: 750
+        preco: 750,
+        nomeHotel: 'Atlantis Copacabana',
+        precoHotel: 120
     },
     {
         nome: 'Florianópolis',
         pais: 'Brasil',
-        preco: 1000
+        preco: 1000,
+        nomeHotel: 'Majestic Palace',
+        precoHotel: 200
     },
     {
         nome: 'São Paulo',
         pais: 'Brasil',
-        preco: 750
+        preco: 750,
+        nomeHotel: 'Paulista Center',
+        precoHotel: 100
     },
     {
         nome: 'Berlim',
         pais: 'Alemanha',
-        preco: 2250
+        preco: 2250,
+        nomeHotel: 'Meininger',
+        precoHotel: 150
     },
     {
         nome: 'Lisboa',
         pais: 'Portugal',
-        preco: 1750
+        preco: 1750,
+        nomeHotel: 'Lisboa',
+        precoHotel: 400
     },
     {
         nome: 'Manágua',
         pais: 'Nicarágua',
-        preco: 1250
+        preco: 1250,
+        nomeHotel: 'Mozonte',
+        precoHotel: 150
     },
     {
         nome: 'Cidade do Cabo',
         pais: 'África do Sul',
-        preco: 2000
+        preco: 2000,
+        nomeHotel: 'Radisson Blu',
+        precoHotel: 550
     },
     {
         nome: 'Monte Tavan Bogd',
         pais: 'Mongólia',
-        preco: 2500
+        preco: 2500,
+        nomeHotel: 'Hemu',
+        precoHotel: 500
     }
 ];
 
 class Voucher {
-    constructor(partida, destino, passagemA, passagemC, passagemB, dataPartida, dataVolta, preco) {
+    constructor(partida, destino, passagemA, passagemC, passagemB, dataPartida, dataVolta, preco, idaEVolta) {
         this.partida = partida;
         this.destino = destino;
         this.passagemA = passagemA;
@@ -84,6 +112,7 @@ class Voucher {
         this.dataPartida = dataPartida;
         this.dataVolta = dataVolta;
         this.preco = preco;
+        this.idaEVolta = idaEVolta;
     }
 }
 
@@ -204,11 +233,18 @@ function selecionarPassagem() {
     let partida = $('inputLocalPartida').value;
     let dataPartida = $('inputDataPartida').value;
     let dataVolta = $('inputDataVolta').value;
+    let idaEVolta = $('inputIdaEVolta').checked;
     let preco = $('precoSubTotal').value;
     let idaOuVolta = document.getElementsByName('idaOuVolta');
 
     if (destino == '' || partida == '') {
         alert('Por favor preencha o local de destino e de partida.');
+        return false;
+    } else if (!checarDisponibilidadeDestino()) {
+        alert('Desculpa, nós não oferecemos passagem para o destino digitado.');
+        return false;
+    } else if (!checarDisponibilidadePartida()) {
+        alert('Desculpa, nós não oferecemos passagem para o local de partida digitado.');
         return false;
     } else if (idaOuVolta[0].checked) {
         if ($('inputDataPartida').value == '') {
@@ -237,7 +273,7 @@ function selecionarPassagem() {
 
         if (c) {
             alert('Passagem selecionada com sucesso!\nPassagem para adulto: ' + qtdAdulto);
-            listaVoucher.push(new Voucher(partida, destino, qtdAdulto, qtdCriancas, qtdBebes, dataPartida, dataVolta, preco));
+            listaVoucher.push(new Voucher(partida, destino, qtdAdulto, qtdCriancas, qtdBebes, dataPartida, dataVolta, preco, idaEVolta));
         }
     } else if (qtdAdulto > 0) {
         let c = confirm(`Passagens selecionadas:
@@ -253,7 +289,31 @@ function selecionarPassagem() {
             \nPassagem(s) para adulto(s): ${qtdAdulto}.
             \nPassagem(s) para criança(s): ${qtdCriancas}.
             \nPassagem(s) para bebe(s): ${qtdBebes};`);
-            listaVoucher.push(new Voucher(partida, destino, qtdAdulto, qtdCriancas, qtdBebes, dataPartida, dataVolta, preco));
+            listaVoucher.push(new Voucher(partida, destino, qtdAdulto, qtdCriancas, qtdBebes, dataPartida, dataVolta, preco, idaEVolta));
+        }
+    }
+
+    return false;
+}
+
+function checarDisponibilidadeDestino() {
+    let destino = $('inputLocalDestino').value;
+
+    for (i in listaDestinos) {
+        if (destino == (listaDestinos[i].nome + ", " + listaDestinos[i].pais)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+function checarDisponibilidadePartida() {
+    let partida = $('inputLocalPartida').value;
+
+    for (i in listaDestinos) {
+        if (partida == (listaDestinos[i].nome + ", " + listaDestinos[i].pais)) {
+            return true;
         }
     }
 
@@ -283,6 +343,27 @@ function relogio() {
     $('divRelogio').innerHTML = 'Horário de Brasília: ' + defineHorario();
 }
 
+function validaEntrada(event) {
+    let code = event.charCode;
+
+    if ((code < 97 || code > 122) && (code < 65 || code > 90)) {
+        event.preventDefault();
+    }
+
+    return false;
+}
+
+function homePageFormHandler() {
+    let results = new URLSearchParams(window.location.search);
+    let inputs = [$('inputLocalPartida'), $('inputLocalDestino')];
+    let cont = 0;
+
+    results.forEach((value) => {
+        inputs[cont].value = value;
+        cont++;
+    })
+}
+
 window.addEventListener("load", function () {
     $('inputLocalPartida').onkeyup = procuraLocalPartida;
     $('inputLocalDestino').onkeyup = procuraLocalDestino;
@@ -292,5 +373,9 @@ window.addEventListener("load", function () {
     $('inputSelecionarPassagem').onclick = selecionarPassagem;
     $('inputIda').onchange = () => $('inputQuantidadeAdulto').value = 0;
     $('inputIdaEVolta').onchange = () => $('inputQuantidadeAdulto').value = 0;
+    $('inputLocalDestino').onchange = () => $('inputQuantidadeAdulto').value = 0;
+    $('inputLocalPartida').addEventListener('keypress', validaEntrada);
+    $('inputLocalDestino').addEventListener('keypress', validaEntrada);
     setInterval(relogio, 1000);
+    homePageFormHandler();
 });
