@@ -274,6 +274,11 @@
     border: 2px solid rgb(22, 47, 160);
 }
 
+#inputDestinoHotel,
+#inputQuartoHotel {
+    width: 60%;
+}
+
 #btn-finalizar-compra,
 #btn-comprar-hotel {
     border: 2px solid rgb(22, 47, 160);

@@ -182,6 +182,8 @@ function selecaoData() {
     let dataHoje = ano + "-" + mes + "-" + dia;
     $('inputDataPartida').setAttribute('min', dataHoje);
     $('inputDataVolta').setAttribute('min', dataHoje);
+    $('dataCheckIn').setAttribute('min', dataHoje);
+    $('dataCheckOut').setAttribute('min', dataHoje);
 };
 
 function calculaPrecoPassagem() {
@@ -358,10 +360,81 @@ function homePageFormHandler() {
     let inputs = [$('inputLocalPartida'), $('inputLocalDestino')];
     let cont = 0;
 
-    results.forEach((value) => {
-        inputs[cont].value = value;
-        cont++;
-    })
+    if (results != null) {
+        results.forEach((value) => {
+            inputs[cont].value = value;
+            cont++;
+        })
+    }
+}
+
+function preencheFormHotel() {
+    $('inputDestinoHotel').value = `Hotel ${destino.nomeHotel}, ${destino.nome}`;
+
+    calculaQuantidadeQuartos();
+}
+
+function calculaQuantidadeQuartos() {
+    let qtdPessoas = parseFloat($('inputQuantidadeAdulto').value) + parseFloat($('inputQuantidadeCriancas').value) + parseFloat($('inputQuantidadeBebes').value);
+    let inputQtdQuartos = $('inputQuartoHotel');
+    let resto;
+
+    if (qtdPessoas == 1) {
+        inputQtdQuartos.value = `1 Quarto, 1 Pessoa`;
+    } else if (qtdPessoas > 1) {
+        resto = qtdPessoas % 2;
+        inputQtdQuartos.value = `${((qtdPessoas-resto)/2)+resto} Quartos, ${qtdPessoas} Pessoas`;
+    }
+}
+
+function calculaPrecoEstadiaHotelEValidaDataEstadia() {
+    let destino = procuraDestino($('inputLocalDestino'));
+    let qtdPessoas = parseFloat($('inputQuantidadeAdulto').value) + parseFloat($('inputQuantidadeCriancas').value) + parseFloat($('inputQuantidadeBebes').value);
+    let dataCheckIn = new Date($('dataCheckIn').value);
+    let dataCheckOut = new Date($('dataCheckOut').value);
+    let difMil = dataCheckOut.getTime() - dataCheckIn.getTime();
+    let qtdDias = difMil / (1000 * 3600 * 24);
+    let precoEstadia = qtdPessoas * qtdDias * destino.precoHotel;
+    let checkInDate = new Date($('dataCheckIn').value);
+    let tempoCheckIn = checkInDate.getTime();
+    let checkOutDate = new Date($('dataCheckOut').value);
+    let tempoCheckOut = checkOutDate.getTime();
+
+    if (!isNaN(precoEstadia)) {
+        $('precoHotel').value = precoEstadia;
+    } else {
+        $('precoHotel').value = '';
+    }
+
+    if (tempoCheckIn == tempoCheckOut) {
+        alert("Por favor, escolha datas de check-in e check-out diferentes.");
+        $('dataCheckOut').value = 'mm/dd/yyyy';
+    } else if (tempoCheckOut < tempoCheckIn) {
+        alert("A data de check-in precisa ser antes da data de check-out.");
+        $('dataCheckOut').value = 'mm/dd/yyyy';
+    }
+}
+
+function validaDataPassagem() {
+    let dataPartidaDate = new Date($('inputDataPartida').value);
+    let tempoPartida = dataPartidaDate.getTime();
+    let dataVoltaDate = new Date($('inputDataVolta').value);
+    let tempoVolta = dataVoltaDate.getTime();
+
+    if (tempoPartida == tempoVolta) {
+        alert("Por favor, escolha datas de partida e volta diferentes.");
+        $('inputDataVolta').value = 'mm/dd/yyyy';
+    } else if (tempoVolta < tempoPartida) {
+        alert("A data de partida precisa ser antes da data de volta.");
+        $('inputDataVolta').value = 'mm/dd/yyyy';
+    }
+}
+
+function validaHotel() {
+    if ($('inputDestinoHotel').value == '') {
+        alert("É preciso selecionar uma passagem para selecionar a estadia.");
+        return false;
+    }
 }
 
 window.addEventListener("load", function () {
@@ -376,6 +449,14 @@ window.addEventListener("load", function () {
     $('inputLocalDestino').onchange = () => $('inputQuantidadeAdulto').value = 0;
     $('inputLocalPartida').addEventListener('keypress', validaEntrada);
     $('inputLocalDestino').addEventListener('keypress', validaEntrada);
+    $('inputSelecionarPassagem').onblur = preencheFormHotel;
     setInterval(relogio, 1000);
+    $('form-escolha-passagem').reset();
+    $('form-escolha-hotel').reset();
+    $('dataCheckOut').onchange = calculaPrecoEstadiaHotelEValidaDataEstadia;
+    $('dataCheckIn').onchange = calculaPrecoEstadiaHotelEValidaDataEstadia;
+    $('inputDataVolta').onchange = validaDataPassagem;
+    $('inputDataPartida').onchange = validaDataPassagem;
+    $('btn-comprar-hotel').onclick = validaHotel;
     homePageFormHandler();
 });

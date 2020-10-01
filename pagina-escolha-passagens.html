@@ -124,26 +124,25 @@
 
             <h3>HOTEL</h3>
 
-            <form action="">
+            <form action="" id="form-escolha-hotel">
 
                 <div class="row">
 
                     <div class="col-lg-6">
 
-                        <label for="inputDestinoHotel">Destino:</label><br>
-                        <input type="text" name="inputDestinoHotel" id="inputDestinoHotel"
-                            placeholder="Entre o nome da cidade"><br><br>
+                        <label for="inputDestinoHotel">Hotel:</label><br>
+                        <input type="text" name="inputDestinoHotel" id="inputDestinoHotel" readonly><br><br>
                         <label for="inputQuartoHotel">Quarto:</label><br>
                         <input type="text" name="inputQuartoHotel" id="inputQuartoHotel"
-                            placeholder="1 Quarto, 1 Pessoa">
+                            placeholder="1 Quarto, 1 Pessoa" readonly>
                     </div>
 
                     <div class="col-lg-6">
                         <label for="dataCheckIn">Check-in / Check-out:</label><br>
-                        <input type="date" name="dataCheckIn" id="dataCheckIn">
-                        <input type="date" name="dataCheckOut" id="dataCheckOut"><br><br>
-                        <label for="precoSubTotal">Sub-total:</label><br>
-                        <input type="text" name="precoSubTotal" id="precoSubTotal" readonly><br><br>
+                        <input type="date" name="dataCheckIn" id="dataCheckIn" required>
+                        <input type="date" name="dataCheckOut" id="dataCheckOut" required><br><br>
+                        <label for="precoHotel">Sub-total:</label><br>
+                        <input type="text" name="precoHotel" id="precoHotel" readonly><br><br>
                         <input type="submit" name="comprar-hotel" id="btn-comprar-hotel" value="Selecionar Estadia">
                     </div>
                 </div>
