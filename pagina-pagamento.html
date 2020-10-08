@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento - Passagens.com</title>
     <script src="js/js-pg-pagamento.js"></script>
-    <script src="js/voucher.js"></script>
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -70,11 +69,42 @@
 
             <h3 style="text-decoration: underline;">Forma de pagamento:</h3>
 
-            <input type="radio" id="inputPagamentoCredito" name="inputPagamento">
-            <label for="inputPagamentoCredito">Cartão de crédito</label><br>
-            <input type="radio" id="inputPagamentoDebito" name="inputPagamento">
-            <label for="inputPagamentoDebito">Cartão de débito</label>
+            <div class="row" id="div-escolha-credito">
 
+                <div class="col-lg-3">
+                    <input type="radio" id="inputPagamentoCredito" name="inputPagamento">
+                    <label for="inputPagamentoCredito" class="mr-5">Cartão de crédito</label>
+                </div>
+
+                <div class="col-lg-5">
+                    <label id="labelCartaoCredito" for="numeroCartaoCredito" class="mt-1 mr-1">Número do Cartão:</label>
+                    <input type="text" id="numeroCartaoCredito">
+                </div>
+
+                <div class="col-lg-4">
+                    <label id="labelCodigoCredito" for="codigoCartaoCredito" class="ml-5 mt-1 mr-1">Código de
+                        segurança:</label>
+                    <input type="text" id="codigoCartaoCredito"><br>
+                </div>
+            </div>
+
+            <div class="row" id="div-escolha-debito">
+
+                <div class="col-lg-3">
+                    <input type="radio" id="inputPagamentoDebito" name="inputPagamento">
+                    <label for="inputPagamentoDebito" class="mr-5">Cartão de débito</label>
+                </div>
+
+                <div class="col-lg-5">
+                    <label id="labelCartaoDebito" for="numeroCartaoDebito" class="ml-1 mt-1 mr-1">Número do Cartão:</label>
+                    <input type="text" id="numeroCartaoDebito">
+                </div>
+
+                <div class="col-lg-4">
+                    <label id="labelCodigoDebito" for="codigoCartaoDebito" class="ml-5 mt-1 mr-1">Código de segurança:</label>
+                    <input type="text" id="codigoCartaoDebito">
+                </div>
+            </div>
         </div>
 
         <div id="div-lista-viajantes">
@@ -145,7 +175,8 @@
             <input type="text" name="valorFinalPagamento" id="valorFinalPagamento" readonly>
             <label for="formaPagamentoFinal">Forma de pagamento: </label>
             <input type="text" name="formaPagamentoFinal" id="formaPagamentoFinal" readonly>
-            <button id="btn-finalizar-pagamento">Finalizar a compra</button>
+            <button id="btn-finalizar-pagamento" onclick="window.location.href='pagina-pagemento.html'">Finalizar a
+                compra</button>
         </div>
     </section>
 

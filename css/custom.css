@@ -300,7 +300,7 @@
 
 #div-input-email-voucher {
     margin-top: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
     padding-bottom: 2%;
 }
 
@@ -309,9 +309,45 @@
     width: 50%;
 }
 
+#div-escolha-forma-pagamento {
+    margin-bottom: 5%;
+}
+
+#div-escolha-credito,
+#div-escolha-debito {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#labelCartaoCredito,
+#numeroCartaoCredito,
+#labelCodigoCredito,
+#codigoCartaoCredito,
+#labelCartaoDebito,
+#numeroCartaoDebito,
+#labelCodigoDebito,
+#codigoCartaoDebito {
+    visibility: hidden;
+}
+
+#codigoCartaoCredito,
+#codigoCartaoDebito {
+    width: 50px;
+}
+
+#labelCartaoCredito,
+#labelCartaoDebito,
+#labelCodigoCredito,
+#labelCodigoDebito {
+    float: left;
+}
+
 #inputValorPagamento {
+    font-size: 170%;
     border: hidden;
     margin-right: 2%;
+    width: 50%;
 }
 
 #labelValorPagamento {
@@ -320,8 +356,8 @@
 }
 
 #div-valor-pagamento {
-    border: 2px solid rgb(22, 47, 160);
     padding: 1%;
+    border: 2px solid rgb(22, 47, 160);
 }
 
 #h4-lista-viajantes-adultos {
@@ -353,7 +389,7 @@
 
 #div-lista-viajantes-bebe {
     padding-bottom: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
     border-bottom: 2px solid rgb(22, 47, 160);
 }
 

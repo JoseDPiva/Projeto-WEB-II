@@ -103,7 +103,7 @@ let listaDestinos = [{
     }
 ];
 
-class Voucher {
+class VoucherPassagem {
     constructor(partida, destino, passagemA, passagemC, passagemB,
         dataPartida, dataVolta, preco, idaEVolta) {
         this.partida = partida;
@@ -118,7 +118,14 @@ class Voucher {
     }
 }
 
-let listaVoucher = [];
+class VoucherHotel {
+    constructor(nomeHotel, dataCheckIn, dataCheckOut, precoHotel) {
+        this.nomeHotel = nomeHotel;
+        this.dataCheckIn = dataCheckIn;
+        this.dataCheckOut = dataCheckOut;
+        this.precoHotel = precoHotel;
+    }
+}
 
 function procuraLocalPartida() {
     'use strict';
@@ -312,8 +319,9 @@ function selecionarPassagem() {
 
         if (c) {
             window.alert('Passagem selecionada com sucesso!\nPassagem para adulto: ' + qtdAdulto);
-            listaVoucher.push(new Voucher(partida, destino, qtdAdulto, qtdCriancas, qtdBebes,
-                dataPartida, dataVolta, preco, idaEVolta));
+            let voucherPassagem = new VoucherPassagem(partida, destino, qtdAdulto, qtdCriancas,
+                 qtdBebes, dataPartida, dataVolta, preco, idaEVolta);
+            sessionStorage.setItem('voucherPassagem', JSON.stringify(voucherPassagem));
         }
     } else if (qtdAdulto > 0) {
         let c = window.confirm(`Passagens selecionadas:
@@ -329,8 +337,9 @@ function selecionarPassagem() {
             \nPassagem(s) para adulto(s): ${qtdAdulto}.
             \nPassagem(s) para criança(s): ${qtdCriancas}.
             \nPassagem(s) para bebe(s): ${qtdBebes};`);
-            listaVoucher.push(new Voucher(partida, destino, qtdAdulto, qtdCriancas, qtdBebes,
-                dataPartida, dataVolta, preco, idaEVolta));
+            let voucherPassagem = new VoucherPassagem(partida, destino, qtdAdulto, qtdCriancas, 
+                qtdBebes, dataPartida, dataVolta, preco, idaEVolta);
+            sessionStorage.setItem('voucherPassagem', JSON.stringify(voucherPassagem));
         }
     }
 
@@ -355,7 +364,9 @@ function relogio() {
             segundo = '0' + segundo;
         }
 
-        return horario = hora + ':' + minuto + ':' + segundo;
+        horario = hora + ':' + minuto + ':' + segundo;
+
+        return horario;
     }
 
     $$('divRelogio').innerHTML = 'Horário de Brasília: ' + defineHorario();
@@ -460,9 +471,37 @@ function validaDataPassagem() {
 
 function validaHotel() {
     'use strict';
-    if ($$('inputDestinoHotel').value === '') {
+    let nomeHotel = $$('inputDestinoHotel').value;
+    let dataCheckIn = $$('dataCheckIn').value;
+    let dataCheckOut = $$('dataCheckOut').value;
+    let precoHotel = $$('precoHotel').value;
+    let destino = procuraDestino($$('inputLocalDestino'));
+    let precoQuarto = destino.precoHotel;
+
+    if (nomeHotel === '') {
         window.alert('É preciso selecionar uma passagem para selecionar a estadia.');
         return false;
+    } else {
+        let c = window.confirm(`Confirmar a seleção do Hotel?\n
+        Hotel Selecionado: ${nomeHotel}.\n
+        Preco por quarto: ${precoQuarto}.\n
+        Preco total: R$${precoHotel}.\n
+        Data de check-in: ${dataCheckIn}.\n
+        Data de check-out: ${dataCheckOut}.`);
+
+        if (c) {
+            let voucherHotel = new VoucherHotel(nomeHotel, dataCheckIn, dataCheckOut, precoHotel);
+            sessionStorage.setItem('voucherHotel', JSON.stringify(voucherHotel));
+        }
+        return false;
+    }
+}
+
+function validaCompra(e) {
+    'use strict';
+
+    if(sessionStorage.length <= 1) {
+        e.preventDefault();
     }
 }
 
@@ -488,5 +527,6 @@ window.addEventListener('load', function () {
     $$('inputDataVolta').onchange = validaDataPassagem;
     $$('inputDataPartida').onchange = validaDataPassagem;
     $$('btn-comprar-hotel').onclick = validaHotel;
+    $$('form-pagamento-final').onsubmit = validaCompra;
     homePageFormHandler();
 });
