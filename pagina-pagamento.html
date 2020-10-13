@@ -78,13 +78,13 @@
 
                 <div class="col-lg-5">
                     <label id="labelCartaoCredito" for="numeroCartaoCredito" class="mt-1 mr-1">Número do Cartão:</label>
-                    <input type="text" id="numeroCartaoCredito">
+                    <input type="text" id="numeroCartaoCredito" maxlength="16" minlength="16" name="numero">
                 </div>
 
                 <div class="col-lg-4">
                     <label id="labelCodigoCredito" for="codigoCartaoCredito" class="ml-5 mt-1 mr-1">Código de
                         segurança:</label>
-                    <input type="text" id="codigoCartaoCredito"><br>
+                    <input type="text" id="codigoCartaoCredito" maxlength="3" minlength="3" name="numero"><br>
                 </div>
             </div>
 
@@ -97,12 +97,12 @@
 
                 <div class="col-lg-5">
                     <label id="labelCartaoDebito" for="numeroCartaoDebito" class="ml-1 mt-1 mr-1">Número do Cartão:</label>
-                    <input type="text" id="numeroCartaoDebito">
+                    <input type="text" id="numeroCartaoDebito" maxlength="16" minlength="16" name="numero">
                 </div>
 
                 <div class="col-lg-4">
                     <label id="labelCodigoDebito" for="codigoCartaoDebito" class="ml-5 mt-1 mr-1">Código de segurança:</label>
-                    <input type="text" id="codigoCartaoDebito">
+                    <input type="text" id="codigoCartaoDebito" maxlength="3" minlength="3" name="numero">
                 </div>
             </div>
         </div>
@@ -122,7 +122,7 @@
                 <div class="col-lg-4">
 
                     <label for="inputCPFViajanteAdulto">CPF:</label>
-                    <input type="text" name="inputCPFViajanteAdulto" id="inputCPFViajanteAdulto">
+                    <input type="text" id="inputCPFViajanteAdulto" name="numero" minlength="11" maxlength="11">
                 </div>
 
                 <div class="col-lg-2">
@@ -135,17 +135,17 @@
             <div class="row mb-3">
 
                 <div class="col-lg-6">
-                    <label for="inputNomeViajanteCriança">Nome Completo: </label>
-                    <input type="text" name="inputNomeViajanteCriança" id="inputNomeViajanteCriança">
+                    <label for="inputNomeViajanteCrianca">Nome Completo: </label>
+                    <input type="text" name="inputNomeViajanteCrianca" id="inputNomeViajanteCrianca">
                 </div>
 
                 <div class="col-lg-4">
-                    <label for="inputCPFViajanteCriança">CPF:</label>
-                    <input type="text" name="inputCPFViajanteCriança" id="inputCPFViajanteCriança">
+                    <label for="inputCPFViajanteCrianca">CPF:</label>
+                    <input type="text" id="inputCPFViajanteCrianca" name="numero" minlength="11" maxlength="11">
                 </div>
 
                 <div class="col-lg-2">
-                    <button id="btn-adicionar-viajante-criança">Adicionar</button>
+                    <button id="btn-adicionar-viajante-crianca">Adicionar</button>
                 </div>
             </div>
 
@@ -159,7 +159,7 @@
 
                 <div class="col-lg-4">
                     <label for="inputCPFViajanteBebe">CPF:</label>
-                    <input type="text" name="inputCPFViajanteBebe" id="inputCPFViajanteBebe">
+                    <input type="text" id="inputCPFViajanteBebe" name="numero" minlength="11" maxlength="11">
                 </div>
 
                 <div class="col-lg-2">

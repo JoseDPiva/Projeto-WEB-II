@@ -366,8 +366,8 @@
 
 #inputNomeViajanteAdulto,
 #inputCPFViajanteAdulto,
-#inputNomeViajanteCriança,
-#inputCPFViajanteCriança,
+#inputNomeViajanteCrianca,
+#inputCPFViajanteCrianca,
 #inputNomeViajanteBebe,
 #inputCPFViajanteBebe {
     border: 2px solid rgb(22, 47, 160);
@@ -375,8 +375,15 @@
 
 }
 
+#numeroCartaoCredito,
+#codigoCartaoCredito,
+#numeroCartaoDebito,
+#codigoCartaoDebito {
+    border: 2px solid rgb(22, 47, 160);
+}
+
 #btn-adicionar-viajante-adulto,
-#btn-adicionar-viajante-criança,
+#btn-adicionar-viajante-crianca,
 #btn-adicionar-viajante-bebe {
     background-color: rgb(40, 164, 185);
     border: 2px solid rgb(22, 47, 160);
