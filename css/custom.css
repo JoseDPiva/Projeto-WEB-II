@@ -394,10 +394,28 @@
     font-weight: bold;
 }
 
-#div-lista-viajantes-bebe {
-    padding-bottom: 2%;
+#btn-mostra-lista-viajantes,
+#btnLimpaListaViajantes {
+    background-color: rgb(40, 164, 185);
+    border: 2px solid rgb(22, 47, 160);
+    color: rgb(22, 47, 160);
+    margin-top: 2%;
+}
+
+#div-lista-viajantes {
     margin-bottom: 5%;
-    border-bottom: 2px solid rgb(22, 47, 160);
+}
+
+#corpo-lista-viajantes {
+    border: 2px solid rgb(22, 47, 160);
+    padding: 1%;
+    padding-bottom: 0%;
+    margin-bottom: 2%;
+}
+
+#corpo-lista-viajantes div {
+    margin-bottom: 1%;
+    font-size: 110%;
 }
 
 #valorFinalPagamento,

@@ -90,6 +90,13 @@ function adicionaViajanteAdulto() {
         };
         listaDeViajantes.push(viajante);
         quantidadeViajantesAdultos++;
+        let div = document.createElement('div');
+        //Cria um div com as informações do viajante e coloca na lista
+        let idDiv = `divViajanteAdulto${quantidadeViajantesAdultos}`;
+        div.setAttribute('id', idDiv);
+        div.innerHTML = `Viajante adulto ${quantidadeViajantesAdultos}: Nome completo:
+         ${nomeA}, CPF: ${CPFA}.`;
+        $$('corpo-lista-viajantes').appendChild(div);
     }
 }
 
@@ -111,6 +118,10 @@ function adicionaViajanteCrianca() {
         };
         listaDeViajantes.push(viajante);
         quantidadeViajantesCriancas++;
+        let div = document.createElement('div');
+        div.innerHTML = `Viajante criança ${quantidadeViajantesCriancas}: Nome completo:
+         ${nomeC}, CPF: ${CPFC}.`;
+        $$('corpo-lista-viajantes').appendChild(div);
     }
 }
 
@@ -132,6 +143,10 @@ function adicionaViajanteBebe() {
         };
         listaDeViajantes.push(viajante);
         quantidadeViajantesBebes++;
+        let div = document.createElement('div');
+        div.innerHTML = `Viajante bebe ${quantidadeViajantesBebes}: Nome completo:
+         ${nomeB}, CPF: ${CPFB}.`;
+        $$('corpo-lista-viajantes').appendChild(div);
     }
 }
 
@@ -153,9 +168,33 @@ function validaInputNaoNumerico(e) {
     'use strict';
     let code = e.charCode;
 
-    if ((code < 65 || code > 90) && (code < 97 || code > 122)) {
+    if ((code < 65 || code > 90) && (code < 97 || code > 122) && (code !== 32)) {
         e.preventDefault();
     }
+}
+
+function limpaListaViajantes() {
+    'use strict';
+
+    $$('corpo-lista-viajantes').innerHTML = '';
+    quantidadeViajantesAdultos = 0;
+    quantidadeViajantesBebes = 0;
+    quantidadeViajantesCriancas = 0;
+}
+
+function imprimeVoucher() {
+    'use strict';
+    let vH = JSON.parse(sessionStorage.getItem('voucherHotel'));
+    let vP = JSON.parse(sessionStorage.getItem('voucherPassagem'));
+    let semVolta = 'Sem data de volta definida';
+    let voucher = `Este é o seu voucher do Passagens.com.\n
+    Local de partida: ${vP.partida}, Local de destino: ${vP.destino}.\n
+    Data de saída: ${vP.dataPartida}, Data de volta: ${vP.idaEVolta ? vP.dataVolta : semVolta}.\n
+    Informações dos viajantes:\n
+    Viajante adulto 1: ${listaDeViajantes[0].nome}, CPF: ${listaDeViajantes[0].cpf}.\n
+    Viajante adulto 2: ${listaDeViajantes[1].nome}, CPF: ${listaDeViajantes[1].cpf}.`;
+
+    return voucher;
 }
 
 window.onload = function () {
@@ -174,4 +213,5 @@ window.onload = function () {
     $$('inputNomeViajanteAdulto').onkeypress = validaInputNaoNumerico;
     $$('inputNomeViajanteCrianca').onkeypress = validaInputNaoNumerico;
     $$('inputNomeViajanteBebe').onkeypress = validaInputNaoNumerico;
+    $$('btnLimpaListaViajantes').onclick = limpaListaViajantes;
 };
