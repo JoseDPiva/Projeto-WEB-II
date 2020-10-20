@@ -298,7 +298,7 @@
 
 /*!--CSS página de pagamento--!*/
 
-#div-input-email-voucher {
+#div-input-email-voucher-e-preco {
     margin-top: 2%;
     margin-bottom: 5%;
     padding-bottom: 2%;
@@ -307,6 +307,10 @@
 #inputEmailEnvioVoucher {
     border: 2px solid rgb(22, 47, 160);
     width: 50%;
+}
+
+#div-email {
+    margin-bottom: 1%;
 }
 
 #div-escolha-forma-pagamento {

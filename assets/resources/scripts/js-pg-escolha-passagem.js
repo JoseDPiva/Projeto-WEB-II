@@ -487,7 +487,7 @@ function validaHotel() {
     if (voucherP === null) {
         window.alert('É preciso selecionar uma passagem para selecionar a estadia.');
         return false;
-    } else if($$('dataCheckIn').value === '' || $$('dataCheckOut').value === '') {
+    } else if ($$('dataCheckIn').value === '' || $$('dataCheckOut').value === '') {
         window.alert('Por favor selecione datas de check-in e check-out.');
         return false;
     } else {
