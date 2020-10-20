@@ -1,11 +1,11 @@
 'use strict';
 
-let $$ = function (id) {
+const $$ = function retornaElementoPeloId(id) {
     return document.getElementById(id);
 };
 
-//Lista com destinos disponíveis
-let listaDestinos = [{
+// Lista com destinos disponíveis
+const listaDestinos = [{
         nome: 'Paris',
         pais: 'França',
         preco: 2000,
@@ -132,8 +132,8 @@ class VoucherHotel {
 }
 
 //Função de procura e sugestão de local de partida
-function procuraLocalPartida() {
-    let input = $$('inputLocalPartida').value;
+const procuraLocalPartida = function procuraOLocalDePartidaESugereEmUmDiv() {
+    const input = $$('inputLocalPartida').value;
     let div = $$('div-sugestao-partida');
     div.innerHTML = '';
 
@@ -147,18 +147,18 @@ function procuraLocalPartida() {
     if (input === '') {
         div.innerHTML = '';
     }
-}
+};
 
-function selecionaLocalPartida() {
+const selecionaLocalPartida = function defineOValorDoInputDePartida() {
     $$('inputLocalPartida').value = $$('div-sugestao-partida').innerHTML;
     if ($$('inputLocalPartida').value === $$('div-sugestao-partida').innerHTML) {
         $$('div-sugestao-partida').style.display = 'none';
     }
-}
+};
 
 //Função de procura e sugestão de local de destino
-function procuraLocalDestino() {
-    let input = $$('inputLocalDestino').value;
+const procuraLocalDestino = function procuraOLocalDeDestinoESugereEmUmDiv() {
+    const input = $$('inputLocalDestino').value;
     let div = $$('div-sugestao-destino');
     div.innerHTML = '';
 
@@ -172,9 +172,9 @@ function procuraLocalDestino() {
     if (input === '') {
         div.innerHTML = '';
     }
-}
+};
 
-let selecionaLocalDestino = function () {
+const selecionaLocalDestino = function defineOValorDoInputDeDestino() {
     $$('inputLocalDestino').value = $$('div-sugestao-destino').innerHTML;
 
     if ($$('inputLocalDestino').value === $$('div-sugestao-destino').innerHTML) {
@@ -183,11 +183,11 @@ let selecionaLocalDestino = function () {
 };
 
 //Determina a data atual como a menor possível para escolha de passagem
-function selecaoData() {
-    let data = new Date();
+const selecaoData = function defineADataDeViagemMinimaComoADataAtual() {
+    const data = new Date();
+    const ano = data.getFullYear();
     let dia = data.getDate();
     let mes = data.getMonth() + 1;
-    let ano = data.getFullYear();
 
     if (dia < 10) {
         dia = '0' + dia;
@@ -195,18 +195,18 @@ function selecaoData() {
         mes = '0' + mes;
     }
 
-    let dataHoje = ano + '-' + mes + '-' + dia;
+    const dataHoje = ano + '-' + mes + '-' + dia;
     $$('inputDataPartida').setAttribute('min', dataHoje);
     $$('inputDataVolta').setAttribute('min', dataHoje);
     $$('dataCheckIn').setAttribute('min', dataHoje);
     $$('dataCheckOut').setAttribute('min', dataHoje);
-}
+};
 
 //Retorna o objeto do destino a partir do nome completo
-let procuraDestino = function (d) {
+const procuraDestino = function retornaObjetoDestinoAPartirDoNome(d) {
     d = d.value;
-    let n = d.indexOf(',');
-    let destinoNome = d.substring(0, n);
+    const n = d.indexOf(',');
+    const destinoNome = d.substring(0, n);
     let destino;
 
     for (let i in listaDestinos) {
@@ -218,11 +218,11 @@ let procuraDestino = function (d) {
     return destino;
 };
 
-function calculaPrecoPassagem() {
+const calculaPrecoPassagem = function calculaOPrecoDaPassagemEMostra() {
+    const destino = procuraDestino($$('inputLocalDestino'));
     let qtdAdulto = parseFloat($$('inputQuantidadeAdulto').value);
     let qtdCriancas = parseFloat($$('inputQuantidadeCriancas').value);
     let qtdBebes = parseFloat($$('inputQuantidadeBebes').value);
-    let destino = procuraDestino($$('inputLocalDestino'));
 
     if (isNaN(qtdAdulto)) {
         qtdAdulto = 0;
@@ -241,12 +241,12 @@ function calculaPrecoPassagem() {
         } else {
             subtotal.value = destino.preco * (qtdCriancas + qtdBebes + qtdAdulto);
         }
-    })();
-}
+    }());
+};
 
 //Itera pela lista de destino procurando o input digitado no local de partida
-function checarDisponibilidadePartida() {
-    let partida = $$('inputLocalPartida').value;
+const checarDisponibilidadePartida = function () {
+    const partida = $$('inputLocalPartida').value;
 
     for (let i in listaDestinos) {
         if (partida === (listaDestinos[i].nome + ', ' + listaDestinos[i].pais)) {
@@ -255,11 +255,11 @@ function checarDisponibilidadePartida() {
     }
 
     return false;
-}
+};
 
 //Itera pela lista de destino procurando o input digitado no local de destino
-function checarDisponibilidadeDestino() {
-    let destino = $$('inputLocalDestino').value;
+const checarDisponibilidadeDestino = function () {
+    const destino = $$('inputLocalDestino').value;
 
     for (let i in listaDestinos) {
         if (destino === (listaDestinos[i].nome + ', ' + listaDestinos[i].pais)) {
@@ -268,20 +268,20 @@ function checarDisponibilidadeDestino() {
     }
 
     return false;
-}
+};
 
-function selecionarPassagem() {
-    let qtdAdulto = parseFloat($$('inputQuantidadeAdulto').value);
-    let qtdCriancas = parseFloat($$('inputQuantidadeCriancas').value);
-    let qtdBebes = parseFloat($$('inputQuantidadeBebes').value);
-    let qtdTotal = qtdAdulto + qtdBebes + qtdCriancas;
-    let destino = $$('inputLocalDestino').value;
-    let partida = $$('inputLocalPartida').value;
-    let dataPartida = $$('inputDataPartida').value;
-    let dataVolta = $$('inputDataVolta').value;
-    let idaEVolta = $$('inputIdaEVolta').checked;
-    let preco = $$('precoSubTotal').value;
-    let idaOuVolta = document.getElementsByName('idaOuVolta');
+const selecionarPassagem = function validaLocalDePartidaEDestinoECriaVoucher() {
+    const qtdAdulto = parseFloat($$('inputQuantidadeAdulto').value);
+    const qtdCriancas = parseFloat($$('inputQuantidadeCriancas').value);
+    const qtdBebes = parseFloat($$('inputQuantidadeBebes').value);
+    const qtdTotal = qtdAdulto + qtdBebes + qtdCriancas;
+    const destino = $$('inputLocalDestino').value;
+    const partida = $$('inputLocalPartida').value;
+    const dataPartida = $$('inputDataPartida').value;
+    const dataVolta = $$('inputDataVolta').value;
+    const idaEVolta = $$('inputIdaEVolta').checked;
+    const preco = $$('precoSubTotal').value;
+    const idaOuVolta = document.getElementsByName('idaOuVolta');
 
     //valida os locais de partida e destino e datas de partida e volta
     if (destino === '' || partida === '') {
@@ -313,7 +313,7 @@ function selecionarPassagem() {
         return false;
     } else if (qtdTotal === 1) {
         //Mensagem de confirmação da seleção de passagem
-        let c = window.confirm(`Passagem selecionada:
+        const c = window.confirm(`Passagem selecionada:
         \nLocal de partida: ${partida}.
         \nLocal de destino: ${destino}.
         \nPassagem para adulto: ${qtdAdulto}.
@@ -322,12 +322,12 @@ function selecionarPassagem() {
         if (c) {
             //Cria o voucher de passagem e guarda na sessionStorage
             window.alert('Passagem selecionada com sucesso!\nPassagem para adulto: ' + qtdAdulto);
-            let voucherPassagem = new VoucherPassagem(partida, destino, qtdAdulto, qtdCriancas,
+            const voucherPassagem = new VoucherPassagem(partida, destino, qtdAdulto, qtdCriancas,
                 qtdBebes, dataPartida, dataVolta, preco, idaEVolta);
             sessionStorage.setItem('voucherPassagem', JSON.stringify(voucherPassagem));
         }
     } else if (qtdAdulto > 0) {
-        let c = window.confirm(`Passagens selecionadas:
+        const c = window.confirm(`Passagens selecionadas:
             \nLocal de partida: ${partida}.
             \nLocal de destino: ${destino}.
             \nPassagem(s) para adulto(s): ${qtdAdulto}.
@@ -340,23 +340,23 @@ function selecionarPassagem() {
             \nPassagem(s) para adulto(s): ${qtdAdulto}.
             \nPassagem(s) para criança(s): ${qtdCriancas}.
             \nPassagem(s) para bebe(s): ${qtdBebes};`);
-            let voucherPassagem = new VoucherPassagem(partida, destino, qtdAdulto, qtdCriancas,
+            const voucherPassagem = new VoucherPassagem(partida, destino, qtdAdulto, qtdCriancas,
                 qtdBebes, dataPartida, dataVolta, preco, idaEVolta);
             sessionStorage.setItem('voucherPassagem', JSON.stringify(voucherPassagem));
         }
     }
 
     return false;
-}
+};
 
 //Exibe um relógio com o horário de Brasília dentro do form de seleção de passagem
-function relogio() {
-    let data = new Date();
+const relogio = function () {
+    const data = new Date();
     let hora = data.getHours();
     let minuto = data.getMinutes();
     let segundo = data.getSeconds();
 
-    function defineHorario() {
+    const defineHorario = function () {
         let horario = '';
 
         if (hora < 10) {
@@ -370,28 +370,28 @@ function relogio() {
         horario = hora + ':' + minuto + ':' + segundo;
 
         return horario;
-    }
+    };
 
     $$('divRelogio').innerHTML = 'Horário de Brasília: ' + defineHorario();
-}
+};
 
 //Verifica que só letras sejam digitadas nos locais de destino e partida
-function validaEntrada(event) {
-    let code = event.charCode;
+const validaEntrada = function validaInputNaoNumerico(event) {
+    const code = event.charCode;
 
     if ((code < 97 || code > 122) && (code < 65 || code > 90)) {
         event.preventDefault();
     }
 
     return false;
-}
+};
 
 //Pega a informação do URL passada pelo form da home page e insere no form
 //de escolha de passagem
-function homePageFormHandler() {
-    let URLSearchParams = window.URLSearchParams;
-    let results = new URLSearchParams(window.location.search);
-    let inputs = [$$('inputLocalPartida'), $$('inputLocalDestino')];
+const homePageFormHandler = function LeURLEDefineOLocalDePartidaEDestino() {
+    const URLSearchParams = window.URLSearchParams;
+    const results = new URLSearchParams(window.location.search);
+    const inputs = [$$('inputLocalPartida'), $$('inputLocalDestino')];
     let cont = 0;
 
     if (results != null) {
@@ -400,14 +400,14 @@ function homePageFormHandler() {
             cont++;
         });
     }
-}
+};
 
 //Calcula a quantidade de quartos de hotel a partir da quantidade de passagens
-function calculaQuantidadeQuartos() {
-    let qtdPessoas = parseFloat($$('inputQuantidadeAdulto').value) +
+const calculaQuantidadeQuartos = function () {
+    const qtdPessoas = parseFloat($$('inputQuantidadeAdulto').value) +
         parseFloat($$('inputQuantidadeCriancas').value) +
         parseFloat($$('inputQuantidadeBebes').value);
-    let inputQtdQuartos = $$('inputQuartoHotel');
+    const inputQtdQuartos = $$('inputQuartoHotel');
     let resto;
 
     if (qtdPessoas === 1) {
@@ -416,31 +416,31 @@ function calculaQuantidadeQuartos() {
         resto = qtdPessoas % 2;
         inputQtdQuartos.value = `${((qtdPessoas-resto)/2)+resto} Quartos, ${qtdPessoas} Pessoas`;
     }
-}
+};
 
 //Preenche o nome do hotel baseado no local de destino selecionado
-function preencheFormHotel() {
-    let destino = procuraDestino($$('inputLocalDestino'));
+const preencheFormHotel = function () {
+    const destino = procuraDestino($$('inputLocalDestino'));
     $$('inputDestinoHotel').value = `Hotel ${destino.nomeHotel}, ${destino.nome}`;
 
     calculaQuantidadeQuartos();
-}
+};
 
 //Calcula quantos dias o hospede ficará no hotel e o preço total
-function calculaPrecoEstadiaHotelEValidaDataEstadia() {
-    let destino = procuraDestino($$('inputLocalDestino'));
-    let qtdPessoas = parseFloat($$('inputQuantidadeAdulto').value) +
+const calculaPrecoHotel = function calculaPrecoEstadiaHotelEValidaDataEstadia() {
+    const destino = procuraDestino($$('inputLocalDestino'));
+    const qtdPessoas = parseFloat($$('inputQuantidadeAdulto').value) +
         parseFloat($$('inputQuantidadeCriancas').value) +
         parseFloat($$('inputQuantidadeBebes').value);
-    let dataCheckIn = new Date($$('dataCheckIn').value);
-    let dataCheckOut = new Date($$('dataCheckOut').value);
-    let difMil = dataCheckOut.getTime() - dataCheckIn.getTime();
-    let qtdDias = difMil / (1000 * 3600 * 24);
-    let precoEstadia = qtdPessoas * qtdDias * destino.precoHotel;
-    let checkInDate = new Date($$('dataCheckIn').value);
-    let tempoCheckIn = checkInDate.getTime();
-    let checkOutDate = new Date($$('dataCheckOut').value);
-    let tempoCheckOut = checkOutDate.getTime();
+    const dataCheckIn = new Date($$('dataCheckIn').value);
+    const dataCheckOut = new Date($$('dataCheckOut').value);
+    const difMil = dataCheckOut.getTime() - dataCheckIn.getTime();
+    const qtdDias = difMil / (1000 * 3600 * 24);
+    const precoEstadia = qtdPessoas * qtdDias * destino.precoHotel;
+    const checkInDate = new Date($$('dataCheckIn').value);
+    const tempoCheckIn = checkInDate.getTime();
+    const checkOutDate = new Date($$('dataCheckOut').value);
+    const tempoCheckOut = checkOutDate.getTime();
 
     if (!isNaN(precoEstadia)) {
         $$('precoHotel').value = precoEstadia;
@@ -455,15 +455,15 @@ function calculaPrecoEstadiaHotelEValidaDataEstadia() {
         window.alert('A data de check-in precisa ser antes da data de check-out.');
         $$('dataCheckOut').value = 'mm/dd/yyyy';
     }
-}
+};
 
 //Valida as datas da passagem para serem diferentes e
 //para a data de volta ser maior que a data de saída
-function validaDataPassagem() {
-    let dataPartidaDate = new Date($$('inputDataPartida').value);
-    let tempoPartida = dataPartidaDate.getTime();
-    let dataVoltaDate = new Date($$('inputDataVolta').value);
-    let tempoVolta = dataVoltaDate.getTime();
+const validaDataPassagem = function validaQueAsDatasDaPassagemSaoDiferentesEPossiveis() {
+    const dataPartidaDate = new Date($$('inputDataPartida').value);
+    const tempoPartida = dataPartidaDate.getTime();
+    const dataVoltaDate = new Date($$('inputDataVolta').value);
+    const tempoVolta = dataVoltaDate.getTime();
 
     if (tempoPartida === tempoVolta) {
         window.alert('Por favor, escolha datas de partida e volta diferentes.');
@@ -472,17 +472,17 @@ function validaDataPassagem() {
         window.alert('A data de partida precisa ser antes da data de volta.');
         $$('inputDataVolta').value = 'mm/dd/yyyy';
     }
-}
+};
 
 //Verifica se uma passagem foi selecionada e cria o voucher de Hotel
-function validaHotel() {
-    let nomeHotel = $$('inputDestinoHotel').value;
-    let dataCheckIn = $$('dataCheckIn').value;
-    let dataCheckOut = $$('dataCheckOut').value;
-    let precoHotel = $$('precoHotel').value;
-    let destino = procuraDestino($$('inputLocalDestino'));
-    let precoQuarto = destino.precoHotel;
-    let voucherP = sessionStorage.getItem('voucherPassagem');
+const validaHotel = function validaASelecaoDePassagemECriaVoucherDeHotel() {
+    const nomeHotel = $$('inputDestinoHotel').value;
+    const dataCheckIn = $$('dataCheckIn').value;
+    const dataCheckOut = $$('dataCheckOut').value;
+    const precoHotel = $$('precoHotel').value;
+    const destino = procuraDestino($$('inputLocalDestino'));
+    const precoQuarto = destino.precoHotel;
+    const voucherP = sessionStorage.getItem('voucherPassagem');
 
     if (voucherP === null) {
         window.alert('É preciso selecionar uma passagem para selecionar a estadia.');
@@ -491,7 +491,7 @@ function validaHotel() {
         window.alert('Por favor selecione datas de check-in e check-out.');
         return false;
     } else {
-        let c = window.confirm(`Confirmar a seleção do Hotel?\n
+        const c = window.confirm(`Confirmar a seleção do Hotel?\n
         Hotel Selecionado: ${nomeHotel}.\n
         Preco por quarto: ${precoQuarto}.\n
         Preco total: R$${precoHotel}.\n
@@ -499,21 +499,21 @@ function validaHotel() {
         Data de check-out: ${dataCheckOut}.`);
 
         if (c) {
-            let voucherHotel = new VoucherHotel(nomeHotel, dataCheckIn, dataCheckOut, precoHotel);
+            const voucherHotel = new VoucherHotel(nomeHotel, dataCheckIn, dataCheckOut, precoHotel);
             sessionStorage.setItem('voucherHotel', JSON.stringify(voucherHotel));
         }
         return false;
     }
-}
+};
 
 //Verfica se uma passagem foi selecionada
-function validaCompra(e) {
-    let voucherP = sessionStorage.getItem('voucherPassagem');
+const validaCompra = function verificaSeUmaPassagemFoiSelecionadaEArmazenadaNaSessionStorage(e) {
+    const voucherP = sessionStorage.getItem('voucherPassagem');
 
     if (voucherP == null) {
         e.preventDefault();
     }
-}
+};
 
 window.addEventListener('load', function () {
     $$('inputLocalPartida').onkeyup = procuraLocalPartida;
@@ -531,8 +531,8 @@ window.addEventListener('load', function () {
     setInterval(relogio, 1000);
     $$('form-escolha-passagem').reset();
     $$('form-escolha-hotel').reset();
-    $$('dataCheckOut').onchange = calculaPrecoEstadiaHotelEValidaDataEstadia;
-    $$('dataCheckIn').onchange = calculaPrecoEstadiaHotelEValidaDataEstadia;
+    $$('dataCheckOut').onchange = calculaPrecoHotel;
+    $$('dataCheckIn').onchange = calculaPrecoHotel;
     $$('inputDataVolta').onchange = validaDataPassagem;
     $$('inputDataPartida').onchange = validaDataPassagem;
     $$('btn-comprar-hotel').onclick = validaHotel;

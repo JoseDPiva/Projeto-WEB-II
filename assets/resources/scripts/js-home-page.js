@@ -1,10 +1,10 @@
 'use strict';
 
-let $$ = function (id) {
+const $$ = function retornaElementoPeloId(id) {
     return document.getElementById(id);
 };
 
-let listaDestinos = [{
+const listaDestinos = [{
         nome: 'Paris',
         pais: 'França',
         preco: 2000
@@ -76,8 +76,8 @@ let listaDestinos = [{
     }
 ];
 
-function procuraLocalPartida() {
-    let input = $$('localpartida').value;
+const procuraLocalPartida = function procuraOLocalDePartidaESugereEmUmDiv() {
+    const input = $$('localpartida').value;
     let div = $$('div-sugestao-partida-home');
     div.innerHTML = '';
 
@@ -91,17 +91,17 @@ function procuraLocalPartida() {
     if (input === '') {
         div.innerHTML = '';
     }
-}
+};
 
-function selecionaLocalPartida() {
+const selecionaLocalPartida = function defineOValorDoInputDePartida() {
     $$('localpartida').value = $$('div-sugestao-partida-home').innerHTML;
     if ($$('localpartida').value === $$('div-sugestao-partida-home').innerHTML) {
         $$('div-sugestao-partida-home').style.display = 'none';
     }
-}
+};
 
-function procuraLocalDestino() {
-    let input = $$('localdestino').value;
+const procuraLocalDestino = function procuraOLocalDeDestinoESugereEmUmDiv() {
+    const input = $$('localdestino').value;
     let div = $$('div-sugestao-destino-home');
     div.innerHTML = '';
 
@@ -115,9 +115,9 @@ function procuraLocalDestino() {
     if (input === '') {
         div.innerHTML = '';
     }
-}
+};
 
-let selecionaLocalDestino = function () {
+const selecionaLocalDestino = function defineOValorDoInputDeDestino() {
     $$('localdestino').value = $$('div-sugestao-destino-home').innerHTML;
 
     if ($$('localdestino').value === $$('div-sugestao-destino-home').innerHTML) {
@@ -125,14 +125,14 @@ let selecionaLocalDestino = function () {
     }
 };
 
-function promptLocal() {
-    let localPartida = window.prompt('De que cidade você partirá?');
+const promptLocal = function promptSobreOLocalDePartida() {
+    const localPartida = window.prompt('De que cidade você partirá?');
 
     $$('localpartida').value = localPartida;
-}
+};
 
-let realsaImagens = function () {
-    let x = document.getElementsByTagName('img');
+const realsaImagens = function criaBordaEmImagemQueAtivaMouseover() {
+    const x = document.getElementsByTagName('img');
 
     function mudaBorda(i) {
         x[i].setAttribute('style', 'border: 2px solid  rgb(22, 47, 160);');
@@ -149,17 +149,17 @@ let realsaImagens = function () {
     }
 };
 
-function validaEntrada(event) {
-    let code = event.charCode;
+const validaEntrada = function validaInputNaoNumerico(event) {
+    const code = event.charCode;
 
     if ((code < 97 || code > 122) && (code < 65 || code > 90)) {
         event.preventDefault();
     }
 
     return false;
-}
+};
 
-function validaLocais() {
+const validaLocais = function verificaSeOsInputsSaoDiferentesENaoVazios() {
     if ($$('localpartida').value === $$('localdestino').value) {
         window.alert('Por favor escolha locais de partida e destino diferentes.');
         return false;
@@ -169,7 +169,7 @@ function validaLocais() {
     } else {
         return true;
     }
-}
+};
 
 window.onload = function () {
     setTimeout(promptLocal, 3000);

@@ -1,19 +1,19 @@
-let $$ = function (id) {
+const $$ = function retornaElementoPeloId(id) {
     'use strict';
 
     return document.getElementById(id);
 };
 
-let listaDeViajantes = [];
+const listaDeViajantes = [];
 let quantidadeViajantesAdultos = 0;
 let quantidadeViajantesCriancas = 0;
 let quantidadeViajantesBebes = 0;
 
 //Procura pelos vouchers de passagem e hotel na session storage
 //e determina o preço total a ser pago
-function voucherHandler() {
+const voucherHandler = function leOsVouchersDeHotelEPassagemEDefineOPrecoTotal() {
     'use strict';
-    let voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
+    const voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
     let precoTotal = parseFloat(voucherPassagem.preco);
     if ((sessionStorage.getItem('voucherHotel')) != null) {
         let voucherHotel = JSON.parse(sessionStorage.getItem('voucherHotel'));
@@ -22,20 +22,20 @@ function voucherHandler() {
 
     $$('inputValorPagamento').value = `R$ ${precoTotal},00`;
     $$('valorFinalPagamento').value = `R$ ${precoTotal},00`;
-}
+};
 
-function escolhaFormaPagamento() {
+const escolhaFormaPagamento = function defineAFormaDePagamentoEMostraOForm() {
     'use strict';
-    let credito = $$('inputPagamentoCredito');
-    let debito = $$('inputPagamentoDebito');
-    let labelCredito = $$('labelCartaoCredito');
-    let numeroCredito = $$('numeroCartaoCredito');
-    let labelCodigoCredito = $$('labelCodigoCredito');
-    let codigoCredito = $$('codigoCartaoCredito');
-    let labelDebito = $$('labelCartaoDebito');
-    let numeroDebito = $$('numeroCartaoDebito');
-    let labelCodigoDebito = $$('labelCodigoDebito');
-    let codigoDebito = $$('codigoCartaoDebito');
+    const credito = $$('inputPagamentoCredito');
+    const debito = $$('inputPagamentoDebito');
+    const labelCredito = $$('labelCartaoCredito');
+    const numeroCredito = $$('numeroCartaoCredito');
+    const labelCodigoCredito = $$('labelCodigoCredito');
+    const codigoCredito = $$('codigoCartaoCredito');
+    const labelDebito = $$('labelCartaoDebito');
+    const numeroDebito = $$('numeroCartaoDebito');
+    const labelCodigoDebito = $$('labelCodigoDebito');
+    const codigoDebito = $$('codigoCartaoDebito');
 
 
     if (credito.checked) {
@@ -61,30 +61,30 @@ function escolhaFormaPagamento() {
         labelCodigoDebito.style.visibility = 'hidden';
         codigoDebito.style.visibility = 'hidden';
     }
-}
+};
 
-function validaInputNumerico(e) {
+const validaInputNumerico = function (e) {
     'use strict';
     let code = e.charCode;
 
     if (code < 48 || code > 57) {
         e.preventDefault();
     }
-}
+};
 
-function adicionaViajanteAdulto() {
+const adicionaViajanteAdulto = function leNomeECPFDoViajanteAdultoEAdicionaNaLista() {
     'use strict';
-    let voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
-    let qtdAdultos = voucherPassagem.passagemA;
-    let nomeA = $$('inputNomeViajanteAdulto').value;
-    let CPFA = $$('inputCPFViajanteAdulto').value;
+    const voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
+    const qtdAdultos = voucherPassagem.passagemA;
+    const nomeA = $$('inputNomeViajanteAdulto').value;
+    const CPFA = $$('inputCPFViajanteAdulto').value;
 
     if ((qtdAdultos === 0) || (quantidadeViajantesAdultos === qtdAdultos)) {
         window.alert('Já foram selecionados todos os viajantes adultos.');
     } else if (nomeA === '' || CPFA === '') {
         window.alert('Por favor entre o nome e CPF do adulto.');
     } else {
-        let viajante = {
+        const viajante = {
             nome: nomeA,
             cpf: CPFA
         };
@@ -92,27 +92,27 @@ function adicionaViajanteAdulto() {
         quantidadeViajantesAdultos++;
         let div = document.createElement('div');
         //Cria um div com as informações do viajante e coloca na lista
-        let idDiv = `divViajanteAdulto${quantidadeViajantesAdultos}`;
+        const idDiv = `divViajanteAdulto${quantidadeViajantesAdultos}`;
         div.setAttribute('id', idDiv);
         div.innerHTML = `Viajante adulto ${quantidadeViajantesAdultos}: Nome completo:
          ${nomeA}, CPF: ${CPFA}.`;
         $$('corpo-lista-viajantes').appendChild(div);
     }
-}
+};
 
-function adicionaViajanteCrianca() {
+const adicionaViajanteCrianca = function leNomeECPFDoViajanteCriancaEAdicionaNaLista() {
     'use strict';
-    let voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
-    let qtdCriancas = voucherPassagem.passagemC;
-    let nomeC = $$('inputNomeViajanteCrianca').value;
-    let CPFC = $$('inputCPFViajanteCrianca').value;
+    const voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
+    const qtdCriancas = voucherPassagem.passagemC;
+    const nomeC = $$('inputNomeViajanteCrianca').value;
+    const CPFC = $$('inputCPFViajanteCrianca').value;
 
     if ((qtdCriancas === 0) || (quantidadeViajantesCriancas === qtdCriancas)) {
         window.alert('Já foram selecionados todos os viajantes crianças.');
     } else if (nomeC === '' || CPFC === '') {
         window.alert('Por favor entre o nome e CPF da criança.');
     } else {
-        let viajante = {
+        const viajante = {
             nome: nomeC,
             cpf: CPFC
         };
@@ -123,21 +123,21 @@ function adicionaViajanteCrianca() {
          ${nomeC}, CPF: ${CPFC}.`;
         $$('corpo-lista-viajantes').appendChild(div);
     }
-}
+};
 
-function adicionaViajanteBebe() {
+const adicionaViajanteBebe = function leNomeECPFDoViajanteBebeEAdicionaNaLista() {
     'use strict';
-    let voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
-    let qtdBebes = voucherPassagem.passagemB;
-    let nomeB = $$('inputNomeViajanteBebe').value;
-    let CPFB = $$('inputCPFViajanteBebe').value;
+    const voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
+    const qtdBebes = voucherPassagem.passagemB;
+    const nomeB = $$('inputNomeViajanteBebe').value;
+    const CPFB = $$('inputCPFViajanteBebe').value;
 
     if ((qtdBebes === 0) || (quantidadeViajantesBebes === qtdBebes)) {
         window.alert('Já foram selecionados todos os viajantes bebês.');
     } else if (nomeB === '' || CPFB === '') {
         window.alert('Por favor entre o nome e CPF do bebe.');
     } else {
-        let viajante = {
+        const viajante = {
             nome: nomeB,
             cpf: CPFB
         };
@@ -148,12 +148,12 @@ function adicionaViajanteBebe() {
          ${nomeB}, CPF: ${CPFB}.`;
         $$('corpo-lista-viajantes').appendChild(div);
     }
-}
+};
 
-function mostraFormaDePagamentoFinal() {
+const mostraFormaDePagamentoFinal = function () {
     'use strict';
-    let credito = $$('inputPagamentoCredito').checked;
-    let debito = $$('inputPagamentoDebito').checked;
+    const credito = $$('inputPagamentoCredito').checked;
+    const debito = $$('inputPagamentoDebito').checked;
 
     if (credito) {
         $$('formaPagamentoFinal').value = 'Cartão de Crédito';
@@ -162,25 +162,25 @@ function mostraFormaDePagamentoFinal() {
     } else {
         $$('formaPagamentoFinal').value = '';
     }
-}
+};
 
-function validaInputNaoNumerico(e) {
+const validaInputNaoNumerico = function (e) {
     'use strict';
-    let code = e.charCode;
+    const code = e.charCode;
 
     if ((code < 65 || code > 90) && (code < 97 || code > 122) && (code !== 32)) {
         e.preventDefault();
     }
-}
+};
 
-function limpaListaViajantes() {
+const limpaListaViajantes = function () {
     'use strict';
 
     $$('corpo-lista-viajantes').innerHTML = '';
     quantidadeViajantesAdultos = 0;
     quantidadeViajantesBebes = 0;
     quantidadeViajantesCriancas = 0;
-}
+};
 
 /* function imprimeVoucher() {
     'use strict';

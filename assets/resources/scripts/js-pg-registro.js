@@ -1,6 +1,6 @@
 'use strict';
 
-let $$ = function (id) {
+const $$ = function retornaElementoPeloId(id) {
     return document.getElementById(id);
 };
 
