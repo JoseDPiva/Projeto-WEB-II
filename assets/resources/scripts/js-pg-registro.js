@@ -1,5 +1,6 @@
+'use strict';
+
 let $$ = function (id) {
-    'use strict';
     return document.getElementById(id);
 };
 
@@ -17,7 +18,6 @@ class Usuario {
 }
 
 function registraUsuario() {
-    'use strict';
     let nome = $$('inputNome').value;
     let cpf = $$('inputCPF').value;
     let endereco = $$('inputEndereco').value;
@@ -34,7 +34,6 @@ function registraUsuario() {
 }
 
 function retornaUsuario() {
-    'use strict';
     let u = localStorage.getItem('usuario');
     let usuario = JSON.parse(u);
 
@@ -42,7 +41,6 @@ function retornaUsuario() {
 }
 
 function logIn() {
-    'use strict';
     let usuario = retornaUsuario();
     let emailUsuario = usuario.email;
     let senhaUsuario = usuario.senha;
@@ -59,7 +57,6 @@ function logIn() {
 }
 
 window.onload = function () {
-    'use strict';
     $$('btn-registro').onclick = registraUsuario;
     $$('btn-form').onclick = logIn;
 };

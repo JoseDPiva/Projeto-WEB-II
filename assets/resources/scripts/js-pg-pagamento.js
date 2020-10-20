@@ -182,7 +182,7 @@ function limpaListaViajantes() {
     quantidadeViajantesCriancas = 0;
 }
 
-function imprimeVoucher() {
+/* function imprimeVoucher() {
     'use strict';
     let vH = JSON.parse(sessionStorage.getItem('voucherHotel'));
     let vP = JSON.parse(sessionStorage.getItem('voucherPassagem'));
@@ -195,7 +195,7 @@ function imprimeVoucher() {
     Viajante adulto 2: ${listaDeViajantes[1].nome}, CPF: ${listaDeViajantes[1].cpf}.`;
 
     return voucher;
-}
+} */
 
 window.onload = function () {
     'use strict';

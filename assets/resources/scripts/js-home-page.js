@@ -1,5 +1,6 @@
+'use strict';
+
 let $$ = function (id) {
-    'use strict';
     return document.getElementById(id);
 };
 
@@ -76,7 +77,6 @@ let listaDestinos = [{
 ];
 
 function procuraLocalPartida() {
-    'use strict';
     let input = $$('localpartida').value;
     let div = $$('div-sugestao-partida-home');
     div.innerHTML = '';
@@ -94,7 +94,6 @@ function procuraLocalPartida() {
 }
 
 function selecionaLocalPartida() {
-    'use strict';
     $$('localpartida').value = $$('div-sugestao-partida-home').innerHTML;
     if ($$('localpartida').value === $$('div-sugestao-partida-home').innerHTML) {
         $$('div-sugestao-partida-home').style.display = 'none';
@@ -102,7 +101,6 @@ function selecionaLocalPartida() {
 }
 
 function procuraLocalDestino() {
-    'use strict';
     let input = $$('localdestino').value;
     let div = $$('div-sugestao-destino-home');
     div.innerHTML = '';
@@ -120,7 +118,6 @@ function procuraLocalDestino() {
 }
 
 let selecionaLocalDestino = function () {
-    'use strict';
     $$('localdestino').value = $$('div-sugestao-destino-home').innerHTML;
 
     if ($$('localdestino').value === $$('div-sugestao-destino-home').innerHTML) {
@@ -129,14 +126,12 @@ let selecionaLocalDestino = function () {
 };
 
 function promptLocal() {
-    'use strict';
     let localPartida = window.prompt('De que cidade você partirá?');
 
     $$('localpartida').value = localPartida;
 }
 
 let realsaImagens = function () {
-    'use strict';
     let x = document.getElementsByTagName('img');
 
     function mudaBorda(i) {
@@ -155,7 +150,6 @@ let realsaImagens = function () {
 };
 
 function validaEntrada(event) {
-    'use strict';
     let code = event.charCode;
 
     if ((code < 97 || code > 122) && (code < 65 || code > 90)) {
@@ -166,7 +160,6 @@ function validaEntrada(event) {
 }
 
 function validaLocais() {
-    'use strict';
     if ($$('localpartida').value === $$('localdestino').value) {
         window.alert('Por favor escolha locais de partida e destino diferentes.');
         return false;
@@ -179,7 +172,6 @@ function validaLocais() {
 }
 
 window.onload = function () {
-    'use strict';
     setTimeout(promptLocal, 3000);
     document.querySelector('img').addEventListener('mouseover', realsaImagens);
     $$('localpartida').addEventListener('keypress', validaEntrada);
