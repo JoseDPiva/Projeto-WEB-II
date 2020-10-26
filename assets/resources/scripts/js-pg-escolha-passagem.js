@@ -295,7 +295,9 @@ const selecionarPassagem = function validaLocalDePartidaEDestinoECriaVoucher() {
         return false;
     } else if (idaOuVolta[0].checked) {
         if ($$('inputDataPartida').value === '') {
-            window.alert('Por favor seleciona  uma data de partida.');
+            /* Se o radio button de 'Ida' está checado mas a data de partida
+            for vazia, alerta para selecionar uma data */
+            window.alert('Por favor selecione uma data de partida.');
             return false;
         }
     } else if (idaOuVolta[1].checked) {

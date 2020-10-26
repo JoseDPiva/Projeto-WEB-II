@@ -54,7 +54,7 @@
             <div class="col-lg-8" id="div-email">
 
                 <label for="inputEmailEnvioVoucher" style="font-size: 170%;">E-mail para envio do voucher:</label><br>
-                <input type="email" placeholder="Insira o e-mail" name="inputEmailEnvioVoucher"
+                <input type="text" placeholder="Insira o e-mail" name="inputEmailEnvioVoucher"
                     id="inputEmailEnvioVoucher" required autofocus>
             </div>
 
@@ -78,13 +78,13 @@
 
                 <div class="col-lg-5">
                     <label id="labelCartaoCredito" for="numeroCartaoCredito" class="mt-1 mr-1">Número do Cartão:</label>
-                    <input type="text" id="numeroCartaoCredito" maxlength="16" minlength="16" name="numero">
+                    <input type="text" id="numeroCartaoCredito" maxlength="16" minlength="16" name="numero"  pattern="[0-9]">
                 </div>
 
                 <div class="col-lg-4">
                     <label id="labelCodigoCredito" for="codigoCartaoCredito" class="ml-5 mt-1 mr-1">Código de
                         segurança:</label>
-                    <input type="text" id="codigoCartaoCredito" maxlength="3" minlength="3" name="numero"><br>
+                    <input type="text" id="codigoCartaoCredito" maxlength="3" minlength="3" name="numero"  pattern="[0-9]"><br>
                 </div>
             </div>
 

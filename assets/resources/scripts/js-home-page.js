@@ -152,18 +152,23 @@ const realsaImagens = function criaBordaEmImagemQueAtivaMouseover() {
 const validaEntrada = function validaInputNaoNumerico(event) {
     const code = event.charCode;
 
-    if ((code < 97 || code > 122) && (code < 65 || code > 90)) {
+    if ((code < 97 || code > 122) && (code < 65 || code > 90) && (code !== 32)) {
         event.preventDefault();
     }
 
     return false;
 };
 
-const validaLocais = function verificaSeOsInputsSaoDiferentesENaoVazios() {
-    if ($$('localpartida').value === $$('localdestino').value) {
+const validaLocais = function verificaSeOsInputsSaoDiferentesNaoVaziosENaoNulos() {
+    const form = document.forms[0];
+    const localPartida = form.elements[0].value;
+    const localDestino = form.elements[1].value;
+
+    if (localPartida === localDestino) {
         window.alert('Por favor escolha locais de partida e destino diferentes.');
         return false;
-    } else if ($$('localpartida').value === '' || $$('localdestino').value === '') {
+    } else if ((localPartida === '') || (localDestino === '') ||
+        (localPartida === null) || (localDestino === null)) {
         window.alert('Por favor preencha o local de partida e de destino.');
         return false;
     } else {
@@ -171,8 +176,12 @@ const validaLocais = function verificaSeOsInputsSaoDiferentesENaoVazios() {
     }
 };
 
+const mostraMensagem = function alteraValorDaMensagemDeErro() {
+    this.setCustomValidity(this.validity.patternMismatch ? 'Apenas letras' : '');
+};
+
 window.onload = function () {
-    setTimeout(promptLocal, 3000);
+    //setTimeout(promptLocal, 3000);
     document.querySelector('img').addEventListener('mouseover', realsaImagens);
     $$('localpartida').addEventListener('keypress', validaEntrada);
     $$('localdestino').addEventListener('keypress', validaEntrada);
@@ -180,5 +189,7 @@ window.onload = function () {
     $$('localdestino').onkeyup = procuraLocalDestino;
     $$('div-sugestao-partida-home').onclick = selecionaLocalPartida;
     $$('div-sugestao-destino-home').onclick = selecionaLocalDestino;
-    $$('btn-escolha-destino').onclick = validaLocais;
+    $$('localpartida').oninvalid = mostraMensagem;
+    $$('localdestino').oninvalid = mostraMensagem;
+    $$('form-destino-home-page').onsubmit = validaLocais;
 };

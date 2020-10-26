@@ -68,7 +68,7 @@
 
     <div id="destino-home-div">
 
-      <form action="pagina-escolha-passagens.html" class="p-3" autocomplete="off" method="GET">
+      <form id="form-destino-home-page" action="pagina-escolha-passagens.html" class="p-3" autocomplete="off" method="GET">
 
         <div class="row" style="align-items: center;">
 
@@ -77,7 +77,7 @@
           </div>
 
           <div class="col-lg-3">
-            <input type="text" name="localpartida" id="localpartida"><br>
+            <input type="text" name="localpartida" id="localpartida" pattern="[A-Za-zÀ-ú,\s]+"><br>
             <div id="div-sugestao-partida-home"></div>
           </div>
 
@@ -86,7 +86,7 @@
           </div>
 
           <div class="col-lg-3">
-            <input type="text" name="localdestino" id="localdestino"><br>
+            <input type="text" name="localdestino" id="localdestino" pattern="[A-Za-zÀ-ú,\s]+"><br>
             <div id="div-sugestao-destino-home"></div>
           </div>
 

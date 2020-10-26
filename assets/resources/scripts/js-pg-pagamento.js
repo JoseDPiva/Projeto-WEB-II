@@ -197,6 +197,14 @@ const limpaListaViajantes = function () {
     return voucher;
 } */
 
+const validaEmail = function validaEmailComRegExEModificaMensagemDeValidacao() {
+    'use strict';
+    const patternEmail = /\w+@\w+\.\w+(\.\w+)*/;
+    const inputEmail = this.value;
+
+    this.setCustomValidity(!patternEmail.test(inputEmail) ? 'Entre um email válido.' : '');
+};
+
 window.onload = function () {
     'use strict';
     voucherHandler();
@@ -214,4 +222,5 @@ window.onload = function () {
     $$('inputNomeViajanteCrianca').onkeypress = validaInputNaoNumerico;
     $$('inputNomeViajanteBebe').onkeypress = validaInputNaoNumerico;
     $$('btnLimpaListaViajantes').onclick = limpaListaViajantes;
+    $$('inputEmailEnvioVoucher').onblur = validaEmail;
 };
