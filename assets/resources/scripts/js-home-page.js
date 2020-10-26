@@ -181,7 +181,7 @@ const mostraMensagem = function alteraValorDaMensagemDeErro() {
 };
 
 window.onload = function () {
-    //setTimeout(promptLocal, 3000);
+    setTimeout(promptLocal, 3000);
     document.querySelector('img').addEventListener('mouseover', realsaImagens);
     $$('localpartida').addEventListener('keypress', validaEntrada);
     $$('localdestino').addEventListener('keypress', validaEntrada);
