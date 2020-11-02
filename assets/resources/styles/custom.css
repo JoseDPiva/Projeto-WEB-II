@@ -298,6 +298,44 @@
 
 /*!--CSS página de pagamento--!*/
 
+#div-header-pacotes {
+    padding-top: 5%;
+    padding-bottom: 3%;
+    margin-bottom: 3%;
+    border-bottom: 2px solid rgb(22, 47, 160);
+}
+
+#div-texto-header-pacotes {
+    margin: auto;
+    width: auto;
+}
+
+#img-orlando {
+    height: 90%;
+    width: 100%;
+}
+
+#pacotes-nacionais {
+    color: rgb(40, 164, 185);
+    text-decoration: underline;
+    margin-bottom: 3%;
+}
+
+#div-opcoes-pacotes {
+    padding-bottom: 1%;
+    margin-bottom: 3%;
+    border-bottom: 2px solid black;
+}
+
+#pacotes-internacionais {
+    color:  rgb(40, 164, 185);
+    text-decoration: underline;
+    margin-bottom: 3%;
+    margin-top: 5%;
+}
+
+/*!--CSS página de pagamento--!*/
+
 #div-input-email-voucher-e-preco {
     margin-top: 2%;
     margin-bottom: 5%;

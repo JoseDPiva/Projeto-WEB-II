@@ -17,46 +17,47 @@ class Usuario {
     }
 }
 
-function registraUsuario() {
-    let nome = $$('inputNome').value;
-    let cpf = $$('inputCPF').value;
-    let endereco = $$('inputEndereco').value;
-    let numeroEndereco = $$('numeroEndereco').value;
-    let cidadeEstado = $$('inputCidadeEstado').value;
-    let email = $$('inputEmail').value;
-    let numeroCelular = $$('inputNumeroCelular').value;
-    let senha = $$('inputSenhaRegistro').value;
+const registraUsuario = function criaObjetoUsuarioESalvaNaLocalStorage() {
+    const nome = $$('inputNome').value;
+    const cpf = $$('inputCPF').value;
+    const endereco = $$('inputEndereco').value;
+    const numeroEndereco = $$('numeroEndereco').value;
+    const cidadeEstado = $$('inputCidadeEstado').value;
+    const email = $$('inputEmail').value;
+    const numeroCelular = $$('inputNumeroCelular').value;
+    const senha = $$('inputSenhaRegistro').value;
 
-    let usuario = new Usuario(nome, cpf, endereco, numeroEndereco,
-        cidadeEstado, email, numeroCelular, senha);
+    const usuarios = localStorage.getItem('usuarios') ?
+        JSON.parse(localStorage.getItem('usuarios')) : [];
 
-    localStorage.setItem('usuario', JSON.stringify(usuario));
-}
+    usuarios.push(new Usuario(nome, cpf, endereco, numeroEndereco, cidadeEstado,
+        email, numeroCelular, senha));
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
 
-function retornaUsuario() {
-    let u = localStorage.getItem('usuario');
-    let usuario = JSON.parse(u);
+    window.alert('Usuário registrado com sucesso.');
+};
 
-    return usuario;
-}
-
-function logIn() {
-    let usuario = retornaUsuario();
-    let emailUsuario = usuario.email;
-    let senhaUsuario = usuario.senha;
-    let emailLogIn = $$('input-email-login').value;
-    let senhaLogIn = $$('senha-login').value;
-
-    if (emailLogIn === emailUsuario && senhaLogIn === senhaUsuario) {
-        window.alert('login com sucesso');
+const logIn = function () {
+    if(!localStorage.getItem('usuarios')) {
+        window.alert('Por favor registre um usuário.');
         return false;
     } else {
-        window.alert('Email ou senha incorretos');
-        return false;
+        const usuarios = JSON.parse(localStorage.getItem('usuarios'));
+        let usuario;
+        const logInEMail = $$('input-email-login').value;
+        const logInSenha = $$('input-senha-login').value;
+
+        usuarios.forEach(function (u, i) {
+            if(u.email === logInEMail) {
+                usuario = usuarios[i];
+                console.log(usuario);
+                return false;
+            }
+        });
     }
-}
+};
 
 window.onload = function () {
-    $$('btn-registro').onclick = registraUsuario;
-    $$('btn-form').onclick = logIn;
+    $$('form-registro-conta').onsubmit = registraUsuario;
+    $$('form-login').onsubmit = logIn;
 };

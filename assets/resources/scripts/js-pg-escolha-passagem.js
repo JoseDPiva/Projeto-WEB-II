@@ -204,7 +204,7 @@ const selecaoData = function defineADataDeViagemMinimaComoADataAtual() {
 
 //Retorna o objeto do destino a partir do nome completo
 const procuraDestino = function retornaObjetoDestinoAPartirDoNome(d) {
-    d = d.value;
+    d = d.value || d;
     const n = d.indexOf(',');
     const destinoNome = d.substring(0, n);
     let destino;
@@ -353,7 +353,7 @@ const selecionarPassagem = function validaLocalDePartidaEDestinoECriaVoucher() {
 
 //Exibe um relógio com o horário de Brasília dentro do form de seleção de passagem
 const relogio = function () {
-    const data = new Date();
+    let data = new Date();
     let hora = data.getHours();
     let minuto = data.getMinutes();
     let segundo = data.getSeconds();
@@ -517,6 +517,29 @@ const validaCompra = function verificaSeUmaPassagemFoiSelecionadaEArmazenadaNaSe
     }
 };
 
+const pacoteHandler = function verificaSeExistePacoteEAplicaNosInputs() {
+    const pacote = JSON.parse(sessionStorage.getItem('pacote'));
+    const prev = document.referrer;
+    let destino;
+
+    if (pacote) {
+        destino = procuraDestino(pacote.nome);
+
+        $$('inputLocalDestino').value = pacote.nome;
+        $$('inputQuantidadeAdulto').value = pacote.pessoas;
+        $$('inputDestinoHotel').value = `Hotel ${destino.nomeHotel}, ${destino.nome}`;
+        $$('inputQuartoHotel').value = `${pacote.quartos} quarto(s), ${pacote.pessoas} pessoa(s)`;
+    }
+
+    if ((prev.includes('pacotes')) && (pacote !== null)) {
+        $$('inputLocalDestino').setAttribute('readonly', true);
+    } else {
+        $$('inputLocalDestino').removeAttribute('readonly');
+    }
+
+    sessionStorage.removeItem('pacote');
+};
+
 window.addEventListener('load', function () {
     $$('inputLocalPartida').onkeyup = procuraLocalPartida;
     $$('inputLocalDestino').onkeyup = procuraLocalDestino;
@@ -540,4 +563,5 @@ window.addEventListener('load', function () {
     $$('btn-comprar-hotel').onclick = validaHotel;
     $$('form-pagamento-final').onsubmit = validaCompra;
     homePageFormHandler();
+    pacoteHandler();
 });

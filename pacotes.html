@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Passagens.com</title>
-    <script src="assets/resources/scripts/js-pg-registro.js"></script>
-    <link rel="stylesheet" href="assets/resources/styles/custom.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacotes</title>
+  <link rel="stylesheet" href="assets/resources/styles/custom.css">
+  <script src="assets/resources/scripts/js-pg-pacotes.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 
         <div class="container">
 
-            <a class="navbar-brand" href="index.html">Passagens.com</a>
+            <a class="navbar-brand" href="index.html" id="navbar-brand">Passagens.com</a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSite">
                 <span class="navbar-toggler-icon"></span>
@@ -47,79 +47,142 @@
         </div>
     </nav>
 
-    <section class="container" id="section-login">
+    <section class="container">
 
-        <form action="" id="form-login" class="form">
-
-            <p id="p-form">Entre em sua conta:</p>
-            <label for="email-login" class="ml-5">E-mail:</label><br>
-            <input type="email" class="ml-5" placeholder="E-mail" name="email-login" id="input-email-login" required
-                autofocus autocomplete="off"><br><br>
-            <label for="senha-login" class="ml-5">Senha:</label><br>
-            <input type="password" class="ml-5" placeholder="Senha" name="senha-login" id="input-senha-login" size="20"
-                maxlength="20" minlength="6" required><br><br>
-            <button type="submit" class="btn" id="btn-form" onsubmit="return false">Entrar</button>
-        </form>
-    </section>
-
-    <section class="container" id="section-registro-conta">
-
-        <h2 id="h2-form-registro">Registre uma conta de graça aqui:</h2>
-
-        <form action="" id="form-registro-conta">
+        <div id="div-header-pacotes">
 
             <div class="row">
 
-                <div class="col-lg-8">
-                    <label for="inputNome">Nome completo:</label><br>
-                    <input type="text" name="nome-registro" id="inputNome" required>
+                <div class="col-lg-7" id="div-texto-header-pacotes">
+
+                    <h1>A forma mais econômica de viajar!</h1>
+                    <p>Pacotes de viagem não só salvam o tempo de procurar um hotel, eles oferecem o melhor preço para uma viagem completa.</p>
                 </div>
 
-                <div class="col-lg-4">
-                    <label for="inputCPF">CPF:</label><br>
-                    <input type="text" name="CPF-registro" id="inputCPF">
-                </div>
-            </div>
-
-            <div class="row mt-3">
-
-                <div class="col-lg-6">
-                    <label for="inputEndereco">Endereço:</label><br>
-                    <input type="text" name="endereco" id="inputEndereco">
-                </div>
-
-                <div class="col-lg-2">
-                    <label for="inputNumeroEndereco">Nº:</label><br>
-                    <input type="text" name="numeroEndereco" id="numeroEndereco">
-                </div>
-
-                <div class="col-lg-4">
-                    <label for="inputCidadeEstado">Cidade/Estado:</label><br>
-                    <input type="text" name="cidadeEstado" id="inputCidadeEstado">
+                <div class="col-lg-5">
+                    <img id="img-orlando" class="img-fluid rounded" src="assets/resources/imagens/Orlando.jpg" alt="orlando">
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="row mt-3">
+    <section class="container">
 
-                <div class="col-lg-6">
-                    <label for="inputEmail">E-mail:</label><br>
-                    <input type="email" name="email" id="inputEmail" required>
-                </div>
+        <h3 id="pacotes-nacionais">Pacotes Nacionais</h3>
 
-                <div class="col-lg-2">
-                    <label for="inputNumeroCelular">Nº Celular:</label><br>
-                    <input type="text" name="numeroCelular" id="inputNumeroCelular">
-                </div>
+        <h3>Rio de Janeiro</h3>
+        <div class="row" id="div-opcoes-pacotes">
 
-                <div class="col-lg-4">
-                    <label for="inputSenhaRegistro">Senha:</label><br>
-                    <input type="password" name="senhaRegistro" id="inputSenhaRegistro" maxlength="20" minlength="6"
-                        size="4" required>
-                </div>
+            <div class="col-lg-6">
+                <p>3 pessoas, 2 quartos de hotel, 5 dias</p>
             </div>
 
-            <button type="submit" class="btn" id="btn-registro" onsubmit="return false">Registrar</button>
-        </form>
+            <div class="col-lg-4">
+                <p>R$ 6300</p>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn-primary" id="0">Escolher</button>
+            </div>
+        </div>
+
+        <h3>Salvador</h3>
+        <div class="row" id="div-opcoes-pacotes">
+
+            <div class="col-lg-6">
+                <p>4 pessoas, 2 quartos de hotel, 7 dias</p>
+            </div>
+
+            <div class="col-lg-4">
+                <p>R$ 13600</p>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn-primary" id="1">Escolher</button>
+            </div>
+        </div>
+
+        <h3>Fernando de Noronha</h3>
+        <div class="row" id="div-opcoes-pacotes">
+
+            <div class="col-lg-6">
+                <p>2 pessoas, 1 quarto de hotel, 3 dias</p>
+            </div>
+
+            <div class="col-lg-4">
+                <p>R$ 11400</p>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn-primary" id="2">Escolher</button>
+            </div>
+        </div>
+
+        <h3>Florianópolis</h3>
+        <div class="row" id="div-opcoes-pacotes">
+
+            <div class="col-lg-6">
+                <p>2 pessoas, 1 quarto de hotel, 2 dias</p>
+            </div>
+
+            <div class="col-lg-4">
+                <p>R$ 4800</p>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn-primary" id="3">Escolher</button>
+            </div>
+        </div>
+
+        <h3 id="pacotes-internacionais">Pacotes Internacionais</h3>
+
+        <h3>Paris</h3>
+        <div class="row" id="div-opcoes-pacotes">
+
+            <div class="col-lg-6">
+                <p>2 pessoas, 1 quarto de hotel, 7 dias</p>
+            </div>
+
+            <div class="col-lg-4">
+                <p>R$ 16400</p>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn-primary" id="4">Escolher</button>
+            </div>
+        </div>
+
+        <h3>Orlando</h3>
+        <div class="row" id="div-opcoes-pacotes">
+
+            <div class="col-lg-6">
+                <p>4 pessoas, 2 quartos de hotel, 3 dias</p>
+            </div>
+
+            <div class="col-lg-4">
+                <p>R$ 21400</p>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn-primary" id="5">Escolher</button>
+            </div>
+        </div>
+
+        <h3>Cairo</h3>
+        <div class="row" id="div-opcoes-pacotes">
+
+            <div class="col-lg-6">
+                <p>3 pessoas, 2 quartos de hotel, 5 dias</p>
+            </div>
+
+            <div class="col-lg-4">
+                <p>R$ 15000</p>
+            </div>
+
+            <div class="col-lg-2">
+                <button class="btn-primary" id="6">Escolher</button>
+            </div>
+        </div>
     </section>
 
     <section>
