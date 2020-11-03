@@ -169,7 +169,6 @@ const validaLocais = function verificaSeOsInputsSaoDiferentesNaoVaziosENaoNulos(
         return false;
     } else if ((localPartida === '') || (localDestino === '') ||
         (localPartida === null) || (localDestino === null)) {
-        window.alert('Por favor preencha o local de partida e de destino.');
         return false;
     } else {
         return true;
@@ -177,11 +176,11 @@ const validaLocais = function verificaSeOsInputsSaoDiferentesNaoVaziosENaoNulos(
 };
 
 const mostraMensagem = function alteraValorDaMensagemDeErro() {
-    this.setCustomValidity(this.validity.patternMismatch ? 'Apenas letras' : '');
+    this.setCustomValidity(this.validity.valueMissing ? 'Preencha o campo' : '');
 };
 
 window.onload = function () {
-    setTimeout(promptLocal, 3000);
+    //setTimeout(promptLocal, 3000);
     document.querySelector('img').addEventListener('mouseover', realsaImagens);
     $$('localpartida').addEventListener('keypress', validaEntrada);
     $$('localdestino').addEventListener('keypress', validaEntrada);

@@ -512,7 +512,7 @@ const validaHotel = function validaASelecaoDePassagemECriaVoucherDeHotel() {
 const validaCompra = function verificaSeUmaPassagemFoiSelecionadaEArmazenadaNaSessionStorage(e) {
     const voucherP = sessionStorage.getItem('voucherPassagem');
 
-    if (voucherP == null) {
+    if (voucherP === null) {
         e.preventDefault();
     }
 };
@@ -540,13 +540,17 @@ const pacoteHandler = function verificaSeExistePacoteEAplicaNosInputs() {
     sessionStorage.removeItem('pacote');
 };
 
+const validaInputNumerico = function verificaSeOInputEUmNumero() {
+    this.setCustomValidity(isNaN(this.value) ? 'Apenas números' : '');
+};
+
 window.addEventListener('load', function () {
     $$('inputLocalPartida').onkeyup = procuraLocalPartida;
     $$('inputLocalDestino').onkeyup = procuraLocalDestino;
     document.querySelector('#div-sugestao-partida').onclick = selecionaLocalPartida;
     $$('div-sugestao-destino').onclick = selecionaLocalDestino;
     $$('div-quantidade-passagens').onchange = calculaPrecoPassagem;
-    $$('inputSelecionarPassagem').onclick = selecionarPassagem;
+    $$('form-escolha-passagem').onsubmit = selecionarPassagem;
     $$('inputIda').onchange = () => $$('inputQuantidadeAdulto').value = 0;
     $$('inputIdaEVolta').onchange = () => $$('inputQuantidadeAdulto').value = 0;
     $$('inputLocalDestino').onchange = () => $$('inputQuantidadeAdulto').value = 0;
@@ -562,6 +566,9 @@ window.addEventListener('load', function () {
     $$('inputDataPartida').onchange = validaDataPassagem;
     $$('btn-comprar-hotel').onclick = validaHotel;
     $$('form-pagamento-final').onsubmit = validaCompra;
+    document.querySelectorAll('input[type="number"]').forEach(ele => {
+        ele.addEventListener('invalid', validaInputNumerico);
+    });
     homePageFormHandler();
     pacoteHandler();
 });

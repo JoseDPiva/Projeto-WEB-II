@@ -77,11 +77,11 @@
 
                         <label for="inputLocalPartida">Partindo de:</label><br>
                         <input type="text" name="inputLocalPartida" placeholder="Partindo de..." id="inputLocalPartida"
-                            required autocomplete="off"><br>
+                            required autocomplete="off" pattern="[A-Za-zÀ-ú,\s]+"><br>
                         <div id="div-sugestao-partida"></div><br>
                         <label for="inputLocalDestino">Com destino a:</label><br>
                         <input type="text" name="inputLocalDestino" placeholder="Com destino a..."
-                            id="inputLocalDestino" required autocomplete="off"> <br>
+                            id="inputLocalDestino" required autocomplete="off" pattern="[A-Za-zÀ-ú,\s]+"> <br>
                         <div id="div-sugestao-destino"></div><br>
                         <input type="radio" name="idaOuVolta" id="inputIda" checked>
                         <label for="inputIda">Ida</label>
@@ -100,13 +100,13 @@
                         <label for="inputQuantidadeAdulto">Quantidade:</label><br>
                         <label for="inputQuantidadeAdulto">Adulto(a):</label>
                         <input type="number" name="inputQuantidadeAdulto" id="inputQuantidadeAdulto" min="0"
-                            value="0"><br><br>
+                            value="0" pattern="[0-9]"><br><br>
                         <label for="inputQuantidadeCriancas">Crianças:</label>
                         <input type="number" name="inputQuantidadeCriancas" id="inputQuantidadeCriancas" min="0"
-                            value="0"><br><br>
+                            value="0" pattern="[0-9]"><br><br>
                         <label for="inputQuantidadeBebes">Bebes:</label>
                         <input type="number" name="inputQuantidadeBebes" id="inputQuantidadeBebes" min="0"
-                            value="0"><br><br>
+                            value="0" pattern="[0-9]"><br><br>
                         <label for="precoSubTotal">Sub-total:</label>
                         <input type="text" name="precoSubTotal" id="precoSubTotal" readonly><br><br>
                         <input type="submit" name="selecionarPassagem" id="inputSelecionarPassagem"
