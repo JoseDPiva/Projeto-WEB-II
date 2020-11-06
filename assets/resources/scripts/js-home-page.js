@@ -171,6 +171,8 @@ const validaLocais = function verificaSeOsInputsSaoDiferentesNaoVaziosENaoNulos(
         (localPartida === null) || (localDestino === null)) {
         return false;
     } else {
+        sessionStorage.setItem('localPartida', localPartida);
+        sessionStorage.setItem('localDestino', localDestino);
         return true;
     }
 };

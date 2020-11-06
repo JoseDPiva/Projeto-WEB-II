@@ -296,7 +296,7 @@
     text-align: center;
 }
 
-/*!--CSS página de pagamento--!*/
+/*!--CSS página de pacotes--!*/
 
 #div-header-pacotes {
     padding-top: 5%;
@@ -332,6 +332,15 @@
     text-decoration: underline;
     margin-bottom: 3%;
     margin-top: 5%;
+}
+
+/*!--CSS página de destinos--!*/
+
+#texto-destino {
+    color: rgb(40, 164, 185);
+    text-decoration: underline;
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 /*!--CSS página de pagamento--!*/

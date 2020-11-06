@@ -388,19 +388,15 @@ const validaEntrada = function validaInputNaoNumerico(event) {
     return false;
 };
 
-//Pega a informação do URL passada pelo form da home page e insere no form
-//de escolha de passagem
+//Pega a informação da sessionStorage armazenada pelo form da home page
+//e insere no form de escolha de passagem
 const homePageFormHandler = function LeURLEDefineOLocalDePartidaEDestino() {
-    const URLSearchParams = window.URLSearchParams;
-    const results = new URLSearchParams(window.location.search);
-    const inputs = [$$('inputLocalPartida'), $$('inputLocalDestino')];
-    let cont = 0;
+    const localPartida = sessionStorage.getItem('localPartida');
+    const localDestino = sessionStorage.getItem('localDestino');
 
-    if (results != null) {
-        results.forEach((value) => {
-            inputs[cont].value = value;
-            cont++;
-        });
+    if ((localPartida !== null) && (localDestino !== null)) {
+        $$('inputLocalPartida').value = localPartida;
+        $$('inputLocalDestino').value = localDestino;
     }
 };
 
