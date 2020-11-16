@@ -20,12 +20,13 @@ const voucherHandler = function leOsVouchersDeHotelEPassagemEDefineOPrecoTotal()
         precoTotal += parseFloat(voucherHotel.precoHotel);
     }
 
-    $$('inputValorPagamento').value = `R$ ${precoTotal},00`;
-    $$('valorFinalPagamento').value = `R$ ${precoTotal},00`;
+    $('#labelValorPagamento').next('input').val(`R$ ${precoTotal},00`);
+    $('#valorFinalPagamento').val(`R$ ${precoTotal},00`);
 };
 
 const escolhaFormaPagamento = function defineAFormaDePagamentoEMostraOForm() {
     'use strict';
+
     const credito = $$('inputPagamentoCredito');
     const debito = $$('inputPagamentoDebito');
     const labelCredito = $$('labelCartaoCredito');
@@ -205,6 +206,17 @@ const validaEmail = function validaEmailComRegExEModificaMensagemDeValidacao() {
     this.setCustomValidity(!patternEmail.test(inputEmail) ? 'Entre um email válido.' : '');
 };
 
+const mudaBordaInputNome = function () {
+    'use strict';
+    const $this = $(this);
+
+    if ($this.val() === '' || $this.val() === null) {
+        $this.css('border-color', 'red');
+    } else {
+        $this.css('border-color', 'green');
+    }
+};
+
 window.onload = function () {
     'use strict';
     voucherHandler();
@@ -213,8 +225,8 @@ window.onload = function () {
     document.getElementsByName('numero').forEach(ele => {
         ele.addEventListener('keypress', validaInputNumerico);
     });
-    $$('btn-adicionar-viajante-adulto').onclick = adicionaViajanteAdulto;
-    $$('btn-adicionar-viajante-crianca').onclick = adicionaViajanteCrianca;
+    $('#btn-adicionar-viajante-adulto').parent('div').find('button').click(adicionaViajanteAdulto);
+    $('#div-add-viajante-crianca').children('button').click(adicionaViajanteCrianca);
     $$('btn-adicionar-viajante-bebe').onclick = adicionaViajanteBebe;
     $$('inputPagamentoCredito').onclick = mostraFormaDePagamentoFinal;
     $$('inputPagamentoDebito').onclick = mostraFormaDePagamentoFinal;
@@ -223,4 +235,6 @@ window.onload = function () {
     $$('inputNomeViajanteBebe').onkeypress = validaInputNaoNumerico;
     $$('btnLimpaListaViajantes').onclick = limpaListaViajantes;
     $$('inputEmailEnvioVoucher').onblur = validaEmail;
+    $('.nome').blur(mudaBordaInputNome);
+    $('.cpf').mask('000.000.000-00');
 };

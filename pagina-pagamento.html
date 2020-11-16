@@ -11,6 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 </head>
 
 <body>
@@ -78,13 +80,15 @@
 
                 <div class="col-lg-5">
                     <label id="labelCartaoCredito" for="numeroCartaoCredito" class="mt-1 mr-1">Número do Cartão:</label>
-                    <input type="text" id="numeroCartaoCredito" maxlength="16" minlength="16" name="numero"  pattern="[0-9]">
+                    <input type="text" id="numeroCartaoCredito" maxlength="16" minlength="16" name="numero"
+                        pattern="[0-9]+">
                 </div>
 
                 <div class="col-lg-4">
                     <label id="labelCodigoCredito" for="codigoCartaoCredito" class="ml-5 mt-1 mr-1">Código de
                         segurança:</label>
-                    <input type="text" id="codigoCartaoCredito" maxlength="3" minlength="3" name="numero"  pattern="[0-9]"><br>
+                    <input type="text" id="codigoCartaoCredito" maxlength="3" minlength="3" name="numero"
+                        pattern="[0-9]+"><br>
                 </div>
             </div>
 
@@ -96,13 +100,17 @@
                 </div>
 
                 <div class="col-lg-5">
-                    <label id="labelCartaoDebito" for="numeroCartaoDebito" class="ml-1 mt-1 mr-1">Número do Cartão:</label>
-                    <input type="text" id="numeroCartaoDebito" maxlength="16" minlength="16" name="numero">
+                    <label id="labelCartaoDebito" for="numeroCartaoDebito" class="ml-1 mt-1 mr-1">Número do
+                        Cartão:</label>
+                    <input type="text" id="numeroCartaoDebito" maxlength="16" minlength="16" name="numero"
+                        pattern="[0-9]+">
                 </div>
 
                 <div class="col-lg-4">
-                    <label id="labelCodigoDebito" for="codigoCartaoDebito" class="ml-5 mt-1 mr-1">Código de segurança:</label>
-                    <input type="text" id="codigoCartaoDebito" maxlength="3" minlength="3" name="numero">
+                    <label id="labelCodigoDebito" for="codigoCartaoDebito" class="ml-5 mt-1 mr-1">Código de
+                        segurança:</label>
+                    <input type="text" id="codigoCartaoDebito" maxlength="3" minlength="3" name="numero"
+                        pattern="[0-9]+">
                 </div>
             </div>
         </div>
@@ -116,13 +124,15 @@
                 <div class="col-lg-6">
 
                     <label for="inputNomeViajanteAdulto">Nome Completo: </label>
-                    <input type="text" name="inputNomeViajanteAdulto" id="inputNomeViajanteAdulto">
+                    <input type="text" name="inputNomeViajanteAdulto" class="nome" id="inputNomeViajanteAdulto"
+                        pattern="[A-Za-zÀ-ú\s]+" required>
                 </div>
 
                 <div class="col-lg-4">
 
                     <label for="inputCPFViajanteAdulto">CPF:</label>
-                    <input type="text" id="inputCPFViajanteAdulto" name="numero" minlength="11" maxlength="11">
+                    <input type="text" id="inputCPFViajanteAdulto" class="cpf" name="numero" minlength="11"
+                        maxlength="11" required>
                 </div>
 
                 <div class="col-lg-2">
@@ -136,15 +146,17 @@
 
                 <div class="col-lg-6">
                     <label for="inputNomeViajanteCrianca">Nome Completo: </label>
-                    <input type="text" name="inputNomeViajanteCrianca" id="inputNomeViajanteCrianca">
+                    <input type="text" name="inputNomeViajanteCrianca" class="nome" id="inputNomeViajanteCrianca"
+                        pattern="[A-Za-zÀ-ú\s]+" required>
                 </div>
 
                 <div class="col-lg-4">
                     <label for="inputCPFViajanteCrianca">CPF:</label>
-                    <input type="text" id="inputCPFViajanteCrianca" name="numero" minlength="11" maxlength="11">
+                    <input type="text" id="inputCPFViajanteCrianca" class="cpf" name="numero" minlength="11"
+                        maxlength="11" required>
                 </div>
 
-                <div class="col-lg-2">
+                <div class="col-lg-2" id="div-add-viajante-crianca">
                     <button id="btn-adicionar-viajante-crianca">Adicionar</button>
                 </div>
             </div>
@@ -154,12 +166,14 @@
 
                 <div class="col-lg-6">
                     <label for="inputNomeViajanteBebe">Nome Completo: </label>
-                    <input type="text" name="inputNomeViajanteBebe" id="inputNomeViajanteBebe">
+                    <input type="text" name="inputNomeViajanteBebe" id="inputNomeViajanteBebe" class="nome"
+                        pattern="[A-Za-zÀ-ú\s]+" required>
                 </div>
 
                 <div class="col-lg-4">
                     <label for="inputCPFViajanteBebe">CPF:</label>
-                    <input type="text" id="inputCPFViajanteBebe" name="numero" minlength="11" maxlength="11">
+                    <input type="text" id="inputCPFViajanteBebe" class="cpf" name="numero" minlength="11" maxlength="11"
+                        required>
                 </div>
 
                 <div class="col-lg-2">
@@ -168,16 +182,17 @@
             </div>
 
             <p>
-                <button id="btn-mostra-lista-viajantes" class="btn mr-2" type="button" data-toggle="collapse" data-target="#listaViajantes" aria-expanded="false" aria-controls="listaViajantes">
+                <button id="btn-mostra-lista-viajantes" class="btn mr-2" type="button" data-toggle="collapse"
+                    data-target="#listaViajantes" aria-expanded="false" aria-controls="listaViajantes">
                     Lista de Viajantes
                 </button>
                 <button class="btn" id="btnLimpaListaViajantes">Limpar Lista</button>
             </p>
             <div class="collapse" id="listaViajantes">
-                
+
                 <div id="corpo-lista-viajantes">
 
-                    
+
                 </div>
             </div>
         </div>
@@ -189,8 +204,7 @@
             <input type="text" name="valorFinalPagamento" id="valorFinalPagamento" readonly>
             <label for="formaPagamentoFinal">Forma de pagamento: </label>
             <input type="text" name="formaPagamentoFinal" id="formaPagamentoFinal" readonly>
-            <button id="btn-finalizar-pagamento" onclick="window.location.href='pagina-pagemento.html'">Finalizar a
-                compra</button>
+            <button id="btn-finalizar-pagamento">Finalizar a compra</button>
         </div>
     </section>
 

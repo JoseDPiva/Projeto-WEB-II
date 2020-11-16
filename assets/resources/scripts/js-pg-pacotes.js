@@ -49,17 +49,24 @@ const listaPacotes = [{
     }
 ];
 
+const fadeInDaImagemDoHeader = function () {
+    'use strict';
+    $('img').hide();
+    $('#img-orlando').fadeIn(1000);
+};
+
 window.onload = function () {
     'use strict';
     document.querySelectorAll('.btn-primary').forEach(function (btn, ind) {
         btn.addEventListener('click', function () {
             sessionStorage.setItem('pacote', JSON.stringify(listaPacotes[ind]));
-            const msg = 
-            `Você será redirecionado para a página de escolha de passagens.
+            const msg =
+                `Você será redirecionado para a página de escolha de passagens.
             Você deve preencher as informações relevantes e
             confirmar a seleção de passagem e hotel.`;
             window.alert(msg);
             location.href = 'pagina-escolha-passagens.html';
         });
     });
+    fadeInDaImagemDoHeader();
 };

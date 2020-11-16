@@ -102,18 +102,18 @@ const selecionaLocalPartida = function defineOValorDoInputDePartida() {
 
 const procuraLocalDestino = function procuraOLocalDeDestinoESugereEmUmDiv() {
     const input = $$('localdestino').value;
-    let div = $$('div-sugestao-destino-home');
-    div.innerHTML = '';
+    let div = $('#div-sugestao-destino-home');
+    div.html('');
 
     for (let i = 0; i < listaDestinos.length; i++) {
         if (listaDestinos[i].nome.toUpperCase().startsWith(input.toUpperCase())) {
-            div.innerHTML = listaDestinos[i].nome + ', ' + listaDestinos[i].pais;
-            div.style.display = 'block';
+            div.html(listaDestinos[i].nome + ', ' + listaDestinos[i].pais);
+            div.css('display', 'block');
         }
     }
 
     if (input === '') {
-        div.innerHTML = '';
+        div.html('');
     }
 };
 
@@ -128,7 +128,7 @@ const selecionaLocalDestino = function defineOValorDoInputDeDestino() {
 const promptLocal = function promptSobreOLocalDePartida() {
     const localPartida = window.prompt('De que cidade você partirá?');
 
-    $$('localpartida').value = localPartida;
+    $('.divLocalPartida > input').val(localPartida);
 };
 
 const realsaImagens = function criaBordaEmImagemQueAtivaMouseover() {
@@ -192,5 +192,6 @@ window.onload = function () {
     $$('div-sugestao-destino-home').onclick = selecionaLocalDestino;
     $$('localpartida').oninvalid = mostraMensagem;
     $$('localdestino').oninvalid = mostraMensagem;
-    $$('form-destino-home-page').onsubmit = validaLocais;
+    $('#destino-home-div form').submit(validaLocais);
+    $('.h2-destinos-populares + p').css('margin-bottom', '0');
 };

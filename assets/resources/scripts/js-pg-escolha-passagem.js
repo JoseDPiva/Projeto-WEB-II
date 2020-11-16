@@ -549,7 +549,9 @@ window.addEventListener('load', function () {
     $$('form-escolha-passagem').onsubmit = selecionarPassagem;
     $$('inputIda').onchange = () => $$('inputQuantidadeAdulto').value = 0;
     $$('inputIdaEVolta').onchange = () => $$('inputQuantidadeAdulto').value = 0;
-    $$('inputLocalDestino').onchange = () => $$('inputQuantidadeAdulto').value = 0;
+    $('#inputLocalDestino').change(function () {
+        $('#inputQuantidadeAdulto').val('0');
+    });
     $$('inputLocalPartida').addEventListener('keypress', validaEntrada);
     $$('inputLocalDestino').addEventListener('keypress', validaEntrada);
     $$('inputSelecionarPassagem').onblur = preencheFormHotel;

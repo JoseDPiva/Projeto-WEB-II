@@ -1,5 +1,13 @@
 /*!--CSS home page--!*/
 
+.invalido {
+    border-color: red;
+}
+
+.valido {
+    border-color: green;
+}
+
 #item-nav {
     font-variant: small-caps;
     font-weight: bold;
