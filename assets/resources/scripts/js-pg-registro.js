@@ -17,7 +17,7 @@ class Usuario {
     }
 }
 
-const registraUsuario = function criaObjetoUsuarioESalvaNaLocalStorage() {
+const registraUsuario = function criaObjetoUsuarioESalvaNaLocalStorage(e) {
     const nome = $$('inputNome').value;
     const cpf = $$('inputCPF').value;
     const endereco = $$('inputEndereco').value;
@@ -27,34 +27,31 @@ const registraUsuario = function criaObjetoUsuarioESalvaNaLocalStorage() {
     const numeroCelular = $$('inputNumeroCelular').value;
     const senha = $$('inputSenhaRegistro').value;
 
-    const usuarios = localStorage.getItem('usuarios') ?
-        JSON.parse(localStorage.getItem('usuarios')) : [];
-
-    usuarios.push(new Usuario(nome, cpf, endereco, numeroEndereco, cidadeEstado,
-        email, numeroCelular, senha));
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    const usuario = new Usuario(nome, cpf, endereco, numeroEndereco, cidadeEstado,
+        email, numeroCelular, senha);
+    localStorage.setItem('usuario', JSON.stringify(usuario));
 
     window.alert('Usuário registrado com sucesso.');
 };
 
-const logIn = function () {
-    if(!localStorage.getItem('usuarios')) {
-        window.alert('Por favor registre um usuário.');
-        return false;
-    } else {
-        const usuarios = JSON.parse(localStorage.getItem('usuarios'));
-        let usuario;
-        const logInEMail = $$('input-email-login').value;
-        const logInSenha = $$('input-senha-login').value;
+const logIn = function (e) {
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const logInEMail = $$('input-email-login').value;
+    const logInSenha = $$('input-senha-login').value;
+    let estadoUsuario;
 
-        usuarios.forEach(function (u, i) {
-            if(u.email === logInEMail) {
-                usuario = usuarios[i];
-                console.log(usuario);
-                return false;
-            }
-        });
+    if ((!usuario) || (usuario.email !== logInEMail) || (usuario.senha !== logInSenha)) {
+        window.alert('Usuário não registrado. Por favor registre-se abaixo.');
+        estadoUsuario = false;
+        sessionStorage.setItem('estadoUsuario', estadoUsuario);
+    } else if ((usuario) && ((logInEMail === usuario.email) && (logInSenha === usuario.senha))) {
+        estadoUsuario = true;
+        sessionStorage.setItem('estadoUsuario', estadoUsuario);
+        window.alert('Log in feito com êxito');
+        location.href = 'index.html';
     }
+
+    e.preventDefault();
 };
 
 window.onload = function () {

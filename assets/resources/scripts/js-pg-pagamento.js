@@ -24,6 +24,18 @@ const voucherHandler = function leOsVouchersDeHotelEPassagemEDefineOPrecoTotal()
     $('#valorFinalPagamento').val(`R$ ${precoTotal},00`);
 };
 
+const usuarioHandler = function procuraPorLogInNoSessionStorageEPegaOEMail() {
+    'use strict';
+    const usuario = JSON.parse(localStorage.getItem('usuario'));
+    const estado = sessionStorage.getItem('estadoUsuario');
+
+    if (estado) {
+        $$('inputEmailEnvioVoucher').value = usuario.email;
+    } else if (!(estado)) {
+        $$('inputEmailEnvioVoucher').value = '';
+    }
+};
+
 const escolhaFormaPagamento = function defineAFormaDePagamentoEMostraOForm() {
     'use strict';
 
@@ -217,9 +229,25 @@ const mudaBordaInputNome = function () {
     }
 };
 
+const mandaEmail = function () {
+    'use strict';
+    Email.send({
+        Host: 'smtp.elasticemail.com',
+        Username: 'projetoweb2jose@gmail.com',
+        Password: 'projetoweb21234',
+        To: 'jdemetriopiva@gmail.com',
+        From: 'projetoweb2jose@gmail.com',
+        Subject: 'This is the subject',
+        Body: 'And this is the body'
+    }).then(
+        message => window.alert(message)
+    );
+};
+
 window.onload = function () {
     'use strict';
     voucherHandler();
+    usuarioHandler();
     $$('inputPagamentoCredito').onchange = escolhaFormaPagamento;
     $$('inputPagamentoDebito').onchange = escolhaFormaPagamento;
     document.getElementsByName('numero').forEach(ele => {
@@ -237,4 +265,5 @@ window.onload = function () {
     $$('inputEmailEnvioVoucher').onblur = validaEmail;
     $('.nome').blur(mudaBordaInputNome);
     $('.cpf').mask('000.000.000-00');
+    $$('btn-finalizar-pagamento').onclick = mandaEmail;
 };
