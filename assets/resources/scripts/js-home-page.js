@@ -143,9 +143,9 @@ const realsaImagens = function criaBordaEmImagemQueAtivaMouseover() {
     }
 
     for (let i = 0; i < x.length; i++) {
-        x[i].addEventListener('mouseover', mudaBorda(i));
+        x[i].onmouseover = mudaBorda(i);
 
-        x[i].addEventListener('mouseout', escondeBorda(i));
+        x[i].onmouseout = escondeBorda(i);
     }
 };
 
@@ -182,8 +182,8 @@ const mostraMensagem = function alteraValorDaMensagemDeErro() {
 };
 
 window.onload = function () {
-    //setTimeout(promptLocal, 3000);
-    document.querySelector('img').addEventListener('mouseover', realsaImagens);
+    setTimeout(promptLocal, 3000);
+    document.querySelector('img').onmouseover = realsaImagens;
     $$('localpartida').addEventListener('keypress', validaEntrada);
     $$('localdestino').addEventListener('keypress', validaEntrada);
     $$('localpartida').onkeyup = procuraLocalPartida;

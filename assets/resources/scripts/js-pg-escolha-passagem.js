@@ -525,6 +525,7 @@ const pacoteHandler = function verificaSeExistePacoteEAplicaNosInputs() {
         $$('inputQuantidadeAdulto').value = pacote.pessoas;
         $$('inputDestinoHotel').value = `Hotel ${destino.nomeHotel}, ${destino.nome}`;
         $$('inputQuartoHotel').value = `${pacote.quartos} quarto(s), ${pacote.pessoas} pessoa(s)`;
+        $$('precoSubTotal').value = destino.preco * $$('inputQuantidadeAdulto').value;
     }
 
     if ((prev.includes('pacotes')) && (pacote !== null)) {

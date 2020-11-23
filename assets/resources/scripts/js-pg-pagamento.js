@@ -1,6 +1,6 @@
-const $$ = function retornaElementoPeloId(id) {
-    'use strict';
+'use strict';
 
+const $$ = function retornaElementoPeloId(id) {
     return document.getElementById(id);
 };
 
@@ -12,7 +12,6 @@ let quantidadeViajantesBebes = 0;
 //Procura pelos vouchers de passagem e hotel na session storage
 //e determina o preço total a ser pago
 const voucherHandler = function leOsVouchersDeHotelEPassagemEDefineOPrecoTotal() {
-    'use strict';
     const voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
     let precoTotal = parseFloat(voucherPassagem.preco);
     if ((sessionStorage.getItem('voucherHotel')) != null) {
@@ -25,7 +24,6 @@ const voucherHandler = function leOsVouchersDeHotelEPassagemEDefineOPrecoTotal()
 };
 
 const usuarioHandler = function procuraPorLogInNoSessionStorageEPegaOEMail() {
-    'use strict';
     const usuario = JSON.parse(localStorage.getItem('usuario'));
     const estado = sessionStorage.getItem('estadoUsuario');
 
@@ -37,7 +35,6 @@ const usuarioHandler = function procuraPorLogInNoSessionStorageEPegaOEMail() {
 };
 
 const escolhaFormaPagamento = function defineAFormaDePagamentoEMostraOForm() {
-    'use strict';
 
     const credito = $$('inputPagamentoCredito');
     const debito = $$('inputPagamentoDebito');
@@ -77,7 +74,6 @@ const escolhaFormaPagamento = function defineAFormaDePagamentoEMostraOForm() {
 };
 
 const validaInputNumerico = function (e) {
-    'use strict';
     let code = e.charCode;
 
     if (code < 48 || code > 57) {
@@ -86,7 +82,6 @@ const validaInputNumerico = function (e) {
 };
 
 const adicionaViajanteAdulto = function leNomeECPFDoViajanteAdultoEAdicionaNaLista() {
-    'use strict';
     const voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
     const qtdAdultos = voucherPassagem.passagemA;
     const nomeA = $$('inputNomeViajanteAdulto').value;
@@ -114,7 +109,6 @@ const adicionaViajanteAdulto = function leNomeECPFDoViajanteAdultoEAdicionaNaLis
 };
 
 const adicionaViajanteCrianca = function leNomeECPFDoViajanteCriancaEAdicionaNaLista() {
-    'use strict';
     const voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
     const qtdCriancas = voucherPassagem.passagemC;
     const nomeC = $$('inputNomeViajanteCrianca').value;
@@ -139,7 +133,6 @@ const adicionaViajanteCrianca = function leNomeECPFDoViajanteCriancaEAdicionaNaL
 };
 
 const adicionaViajanteBebe = function leNomeECPFDoViajanteBebeEAdicionaNaLista() {
-    'use strict';
     const voucherPassagem = JSON.parse(sessionStorage.getItem('voucherPassagem'));
     const qtdBebes = voucherPassagem.passagemB;
     const nomeB = $$('inputNomeViajanteBebe').value;
@@ -164,7 +157,6 @@ const adicionaViajanteBebe = function leNomeECPFDoViajanteBebeEAdicionaNaLista()
 };
 
 const mostraFormaDePagamentoFinal = function () {
-    'use strict';
     const credito = $$('inputPagamentoCredito').checked;
     const debito = $$('inputPagamentoDebito').checked;
 
@@ -178,7 +170,6 @@ const mostraFormaDePagamentoFinal = function () {
 };
 
 const validaInputNaoNumerico = function (e) {
-    'use strict';
     const code = e.charCode;
 
     if ((code < 65 || code > 90) && (code < 97 || code > 122) && (code !== 32)) {
@@ -187,7 +178,6 @@ const validaInputNaoNumerico = function (e) {
 };
 
 const limpaListaViajantes = function () {
-    'use strict';
 
     $$('corpo-lista-viajantes').innerHTML = '';
     quantidadeViajantesAdultos = 0;
@@ -195,23 +185,7 @@ const limpaListaViajantes = function () {
     quantidadeViajantesCriancas = 0;
 };
 
-/* function imprimeVoucher() {
-    'use strict';
-    let vH = JSON.parse(sessionStorage.getItem('voucherHotel'));
-    let vP = JSON.parse(sessionStorage.getItem('voucherPassagem'));
-    let semVolta = 'Sem data de volta definida';
-    let voucher = `Este é o seu voucher do Passagens.com.\n
-    Local de partida: ${vP.partida}, Local de destino: ${vP.destino}.\n
-    Data de saída: ${vP.dataPartida}, Data de volta: ${vP.idaEVolta ? vP.dataVolta : semVolta}.\n
-    Informações dos viajantes:\n
-    Viajante adulto 1: ${listaDeViajantes[0].nome}, CPF: ${listaDeViajantes[0].cpf}.\n
-    Viajante adulto 2: ${listaDeViajantes[1].nome}, CPF: ${listaDeViajantes[1].cpf}.`;
-
-    return voucher;
-} */
-
 const validaEmail = function validaEmailComRegExEModificaMensagemDeValidacao() {
-    'use strict';
     const patternEmail = /\w+@\w+\.\w+(\.\w+)*/;
     const inputEmail = this.value;
 
@@ -219,7 +193,6 @@ const validaEmail = function validaEmailComRegExEModificaMensagemDeValidacao() {
 };
 
 const mudaBordaInputNome = function () {
-    'use strict';
     const $this = $(this);
 
     if ($this.val() === '' || $this.val() === null) {
@@ -229,23 +202,52 @@ const mudaBordaInputNome = function () {
     }
 };
 
-const mandaEmail = function () {
-    'use strict';
-    Email.send({
-        Host: 'smtp.elasticemail.com',
-        Username: 'projetoweb2jose@gmail.com',
-        Password: 'projetoweb21234',
-        To: 'jdemetriopiva@gmail.com',
-        From: 'projetoweb2jose@gmail.com',
-        Subject: 'This is the subject',
-        Body: 'And this is the body'
-    }).then(
-        message => window.alert(message)
-    );
+const validaFormaPagamento = function () {
+    const credito = $$('inputPagamentoCredito');
+    const debito = $$('inputPagamentoDebito');
+    const nCredito = $$('numeroCartaoCredito').value;
+    const nDebito = $$('numeroCartaoDebito').value;
+    const cCredito = $$('codigoCartaoCredito').value;
+    const cDebito = $$('codigoCartaoDebito').value;
+
+    if (credito.checked) {
+        if ((!nCredito) || (!cCredito)) {
+            return false;
+        } else if ((nCredito.length < 16) || (cCredito.length < 3)) {
+            return false;
+        }
+    } else if (debito.checked) {
+        if ((!nDebito) || (!cDebito)) {
+            return false;
+        } else if ((nDebito.length < 16) || (cDebito.length < 3)) {
+            return false;
+        }
+    } else if ((!credito.checked) && (!debito.checked)) {
+        return false;
+    }
+
+    return true;
+};
+
+const validaCompra = function () {
+    const email = $$('inputEmailEnvioVoucher').value;
+    const vP = JSON.parse(sessionStorage.getItem('voucherPassagem'));
+    const qtdPassageiros = vP.passagemA + vP.passagemB + vP.passagemC;
+    const qtdLista = quantidadeViajantesAdultos + quantidadeViajantesBebes +
+        quantidadeViajantesCriancas;
+
+    if ((!/\w+@\w+\.\w+(\.\w+)*/.test(email))) {
+        window.alert('Por favor insira um email válido.');
+    } else if (!validaFormaPagamento()) {
+        window.alert('Por favor selecione e preencha uma forma de pagamento corretamente.');
+    } else if (qtdLista < qtdPassageiros) {
+        window.alert('Por favor adicione os viajantes restantes à lista.');
+    } else {
+        window.alert('Voucher enviado com sucesso!');
+    }
 };
 
 window.onload = function () {
-    'use strict';
     voucherHandler();
     usuarioHandler();
     $$('inputPagamentoCredito').onchange = escolhaFormaPagamento;
@@ -265,5 +267,5 @@ window.onload = function () {
     $$('inputEmailEnvioVoucher').onblur = validaEmail;
     $('.nome').blur(mudaBordaInputNome);
     $('.cpf').mask('000.000.000-00');
-    $$('btn-finalizar-pagamento').onclick = mandaEmail;
+    $$('btn-finalizar-pagamento').onclick = validaCompra;
 };

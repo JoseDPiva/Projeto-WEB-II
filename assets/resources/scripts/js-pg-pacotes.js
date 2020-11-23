@@ -1,3 +1,5 @@
+'use strict';
+
 const listaPacotes = [{
         id: 0,
         nome: 'Rio de Janeiro, Brasil',
@@ -50,13 +52,11 @@ const listaPacotes = [{
 ];
 
 const fadeInDaImagemDoHeader = function () {
-    'use strict';
     $('img').hide();
     $('#img-orlando').fadeIn(1000);
 };
 
 window.onload = function () {
-    'use strict';
     document.querySelectorAll('.btn-primary').forEach(function (btn, ind) {
         btn.addEventListener('click', function () {
             sessionStorage.setItem('pacote', JSON.stringify(listaPacotes[ind]));
